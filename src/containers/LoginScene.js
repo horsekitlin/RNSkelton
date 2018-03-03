@@ -7,11 +7,9 @@ const mapStateToProps = ({ user }) => ({
   user
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleLogin: payload => dispatch(handleLogin(payload))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  handleLogin: payload => dispatch(handleLogin(payload))
+});
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(LoginScene)
