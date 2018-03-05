@@ -23,7 +23,8 @@ const initState = {
 
 export default class Login extends React.Component {
   static propTypes = {
-    handleLogin: propTypes.func.isRequired
+    handleLogin: propTypes.func.isRequired,
+    user: propTypes.object.isRequired
   };
 
   constructor(props) {

@@ -1,3 +1,4 @@
+import "./tempPolyfills";
 import sinon from "sinon";
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";

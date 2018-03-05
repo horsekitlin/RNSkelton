@@ -56,7 +56,11 @@ const AuthWrapper = props => {
 
 AuthWrapper.propType = {
   user: propTypes.object.isRequired,
+  settings: propTypes.object.isRequired,
   handleSidebar: propTypes.func.isRequired
 };
 
+AuthWrapper.componentDidCatch = (err) => {
+  console.log(err);
+}
 export default AuthWrapper;

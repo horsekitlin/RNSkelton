@@ -11,9 +11,9 @@ class App extends Component {
       <div className="App">
         <Router>
           <AuthWrapper>
-          <Switch>
-          <Route exact path="/" component={HomeScene} />
-          </Switch>
+            <Switch>
+              <Route exact path="/" component={HomeScene} />
+            </Switch>
           </AuthWrapper>
         </Router>
       </div>
