@@ -1,6 +1,6 @@
 export default {
-  settings: {
-    sidebar: false
+  route: {
+    currentPage: 'Home'
   },
   user: {
     login: {
