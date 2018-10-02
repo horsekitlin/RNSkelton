@@ -1,5 +1,4 @@
 import App from '../App';
-import { handleLogin } from '../actions/user';
 import { connect } from 'react-redux';
 
 const mapStateToProps = ({ user }) => ({

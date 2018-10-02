@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/AppContainer';
 import routes from './routes';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
