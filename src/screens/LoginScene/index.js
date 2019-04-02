@@ -11,7 +11,7 @@ const initState = {
   passwordErrMsg: ''
 };
 
-export default class Login extends React.Component {
+export default class Login extends React.PureComponent {
   static propTypes = {
     handleLogin: propTypes.func.isRequired,
     user: propTypes.object.isRequired

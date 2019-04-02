@@ -1,6 +1,6 @@
-import initialState from './initialState';
+import {routeState} from './initialState';
 
-export default function(route = initialState.route, { type, payload }) {
+export default function(route = routeState, { type, payload }) {
   switch (type) {
     default:
       return route;

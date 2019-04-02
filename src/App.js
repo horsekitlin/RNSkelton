@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Login from './containers/LoginContainer';
 import Home from './containers/HomeContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-class App extends Component {
+class App extends PureComponent {
   componentDidMount() {
 
   }
 
   render() {
-    if(!this.props.user.login.ok) {
+    const hasLogin = this.props.user.getIn(['login', 'ok']);
+    if(!hasLogin) {
       return <Login />
     }
 
