@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from '../reducers';
 import rootSaga from '../sagas';
 
+
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware({});
   const composeEnhancers =
@@ -16,5 +17,6 @@ const configureStore = () => {
     runSaga: sagaMiddleware.run(rootSaga)
   };
 };
+
 
 export default configureStore;
