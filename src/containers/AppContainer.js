@@ -1,5 +1,6 @@
 import App from '../App';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 
 const mapStateToProps = ({ user }) => ({
   user
@@ -8,4 +9,6 @@ const mapStateToProps = ({ user }) => ({
 const mapDispatchToProps = dispatch => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(App)
+);

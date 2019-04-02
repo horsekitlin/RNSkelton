@@ -5,7 +5,7 @@ const history = createBrowserHistory();
 
 export const userState = fromJS({
   login: {
-    ok: false
+    ok: true
   }
 });
 
