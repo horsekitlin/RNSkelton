@@ -37,9 +37,6 @@ class App extends PureComponent {
       mobileOpen: false
     };
   }
-  componentDidMount() {
-
-  }
 
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });

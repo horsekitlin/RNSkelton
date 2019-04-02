@@ -15,141 +15,118 @@ import AdminNavbarLinks from "components/Navbars/AdminNavbarLinks.jsx";
 import RTLNavbarLinks from "components/Navbars/RTLNavbarLinks.jsx";
 
 import sidebarStyle from "assets/jss/material-dashboard-react/components/sidebarStyle.jsx";
+import { Divider } from "@material-ui/core";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import MailIcon from "@material-ui/icons/Mail";
+import MenuIcon from "@material-ui/icons/Menu";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
 
-const Sidebar = ({ ...props }) => {
-  // verifies if routeName is the one active (in browser input)
-  function activeRoute(routeName) {
-    return true;
+const drawerWidth = 240;
+
+const styles = theme => ({
+  root: {
+    display: "flex"
+  },
+  drawer: {
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0
+    }
+  },
+  appBar: {
+    marginLeft: drawerWidth,
+    [theme.breakpoints.up("sm")]: {
+      width: `calc(100% - ${drawerWidth}px)`
+    }
+  },
+  menuButton: {
+    marginRight: 20,
+    [theme.breakpoints.up("sm")]: {
+      display: "none"
+    }
+  },
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3
   }
-  const { classes, color, logo, image, logoText, routes } = props;
-  var links = (
-    <List className={classes.list}>
-      {routes.map((prop, key) => {
-        var activePro = " ";
-        var listItemClasses;
-        if (prop.path === "/upgrade-to-pro") {
-          activePro = classes.activePro + " ";
-          listItemClasses = classNames({
-            [" " + classes[color]]: true
-          });
-        } else {
-          listItemClasses = classNames({
-            [" " + classes[color]]: activeRoute(prop.layout + prop.path)
-          });
-        }
-        const whiteFontClasses = classNames({
-          [" " + classes.whiteFont]: activeRoute(prop.layout + prop.path)
-        });
-        return (
-          <NavLink
-            to={prop.layout + prop.path}
-            className={activePro + classes.item}
-            activeClassName="active"
-            key={key}
-          >
-            <ListItem button className={classes.itemLink + listItemClasses}>
-              {typeof prop.icon === "string" ? (
-                <Icon
-                  className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive
-                  })}
-                >
-                  {prop.icon}
-                </Icon>
-              ) : (
-                <prop.icon
-                  className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive
-                  })}
-                />
-              )}
-              <ListItemText
-                primary={
-                  props.rtlActive ? prop.rtlName : prop.name
-                }
-                className={classNames(classes.itemText, whiteFontClasses, {
-                  [classes.itemTextRTL]: props.rtlActive
-                })}
-                disableTypography={true}
-              />
+});
+
+class Sidebar extends React.PureComponent {
+  state = {
+    mobileOpen: false
+  };
+
+  render() {
+    const { classes, theme } = this.props;
+
+    const drawer = (
+      <div>
+        <div className={classes.toolbar} />
+        <Divider />
+        <List>
+          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
             </ListItem>
-          </NavLink>
-        );
-      })}
-    </List>
-  );
-  var brand = (
-    <div className={classes.logo}>
-      <a
-        href="https://www.creative-tim.com"
-        className={classNames(classes.logoLink, {
-          [classes.logoLinkRTL]: props.rtlActive
-        })}
-      >
-        <div className={classes.logoImage}>
-          <img src={logo} alt="logo" className={classes.img} />
-        </div>
-        {logoText}
-      </a>
-    </div>
-  );
-  return (
-    <div>
-      <Hidden mdUp implementation="css">
-        <Drawer
-          variant="temporary"
-          anchor={props.rtlActive ? "left" : "right"}
-          open={props.open}
-          classes={{
-            paper: classNames(classes.drawerPaper, {
-              [classes.drawerPaperRTL]: props.rtlActive
-            })
-          }}
-          onClose={props.handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true // Better open performance on mobile.
-          }}
-        >
-          {brand}
-          <div className={classes.sidebarWrapper}>
-            {props.rtlActive ? <RTLNavbarLinks /> : <AdminNavbarLinks />}
-            {links}
-          </div>
-          {image !== undefined ? (
-            <div
-              className={classes.background}
-              style={{ backgroundImage: "url(" + image + ")" }}
-            />
-          ) : null}
-        </Drawer>
-      </Hidden>
-      <Hidden smDown implementation="css">
-        <Drawer
-          anchor={props.rtlActive ? "right" : "left"}
-          variant="permanent"
-          open
-          classes={{
-            paper: classNames(classes.drawerPaper, {
-              [classes.drawerPaperRTL]: props.rtlActive
-            })
-          }}
-        >
-          {brand}
-          <div className={classes.sidebarWrapper}>{links}</div>
-          {image !== undefined ? (
-            <div
-              className={classes.background}
-              style={{ backgroundImage: "url(" + image + ")" }}
-            />
-          ) : null}
-        </Drawer>
-      </Hidden>
-    </div>
-  );
-};
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {["All mail", "Trash", "Spam"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+      </div>
+    );
+    return (
+      <nav className={classes.drawer}>
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Hidden smUp implementation="css">
+          <Drawer
+            container={this.props.container}
+            variant="temporary"
+            anchor={theme.direction === "rtl" ? "right" : "left"}
+            open={this.state.mobileOpen}
+            onClose={this.handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+        <Hidden xsDown implementation="css">
+          <Drawer
+            classes={{
+              paper: classes.drawerPaper
+            }}
+            variant="permanent"
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
+    );
+  }
+}
 
 Sidebar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(sidebarStyle)(Sidebar);
+export default withStyles({ ...sidebarStyle, ...styles }, { withTheme: true })(
+  Sidebar
+);
