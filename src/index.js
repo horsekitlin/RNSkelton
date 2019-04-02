@@ -6,6 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './containers/AppContainer';
 import { WebGLRenderer } from 'three';
 
+import "assets/css/material-dashboard-react.css?v=1.6.0";
+
 const rootEl = document.getElementById('root')
 const renderer = new WebGLRenderer({antialias: true})
 

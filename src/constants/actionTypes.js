@@ -1,9 +1,14 @@
 import constants from 'flux-constants';
 
-export default constants([
+const syncActions = [
+  'LOGOUT',
+  'HANDLE_SIDEBAR'
+];
+
+export const aSyncActions = [
   'LOGIN',
   'LOGIN_SUCCESS',
   'LOGIN_ERROR',
-  'LOGOUT',
-  'HANDLE_SIDEBAR'
-]);
+];
+
+export default constants([...syncActions, ...aSyncActions]);
