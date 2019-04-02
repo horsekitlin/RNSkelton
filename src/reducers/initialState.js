@@ -4,7 +4,7 @@ export default {
   },
   user: {
     login: {
-      ok: false
+      ok: true
     }
   }
 };

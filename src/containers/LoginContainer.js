@@ -1,4 +1,4 @@
-import LoginScene from '../components/LoginScene';
+import LoginScene from '../screens/LoginScene';
 import { handleLogin } from '../actions/user';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
