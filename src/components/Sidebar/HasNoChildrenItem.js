@@ -42,7 +42,7 @@ const styles = theme => ({
   },
 });
 
-const HasNoChildrenItem = ({classes}) => (
+const HasNoChildrenItem = ({classes, label, icon}) => (
   <ExpansionPanel
     className={classes.listContainer}
     square={false}
@@ -50,9 +50,9 @@ const HasNoChildrenItem = ({classes}) => (
   >
     <ExpansionPanelSummary>
       <Icon style={{color: '#FFF'}}>
-        add_circle
+        {icon}
       </Icon>
-      <Typography>Home</Typography>
+      <Typography>{label}</Typography>
     </ExpansionPanelSummary>
   </ExpansionPanel>
 );

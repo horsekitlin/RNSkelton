@@ -9,6 +9,7 @@
     "flux-constants": "^0.2.2",
     "history": "^4.9.0",
     "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.11",
     "perfect-scrollbar": "^1.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.2.0",

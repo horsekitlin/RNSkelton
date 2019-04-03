@@ -6,8 +6,52 @@ import Hidden from "@material-ui/core/Hidden";
 import Divider from "@material-ui/core/Divider";
 import HasChildrenItem from './HasChildrenItem';
 import HasNoChildrenItem from './HasNoChildrenItem';
+import isEmpty from 'lodash/isEmpty';
 
 const drawerWidth = 240;
+
+const sidebarItems = [
+  {
+    label: '交易概况',
+    icon: 'shopping_cart',
+    path: '/transations',
+  },
+  {
+    label: '系统信息',
+    icon: 'notifications',
+    path: '/system/message',
+  },{
+    label: '自主渠道',
+    icon: 'notifications',
+    path: '/channel',
+    items: [
+      {label: '订单管理', path: '/order',},
+      {label: '兼职人员', path: '/transations',},
+      {label: '充值纪录', path: '/transations',},
+      {label: '帐户信息', path: '/transations',},
+      {label: '余额明细', path: '/transations',},
+    ],
+  },{
+    label: '第三方渠道',
+    icon: 'notifications',
+    items: [
+      {label: '订单管理', path: '/order',},
+      {label: '结算纪录', path: '/transations',},
+      {label: '款项提现', path: '/transations',},
+    ],
+  },{
+    label: '系统设置',
+    icon: 'notifications',
+    path: '/channel',
+    items: [
+      {label: '商家信息', path: '/order',},
+      {label: '用户信息', path: '/transations',},
+      {label: '后台用户', path: '/transations',},
+      {label: '角色权限', path: '/transations',},
+      {label: '应用设置', path: '/transations',},
+    ],
+  },
+];
 
 const styles = theme => ({
   listContainer: {
@@ -52,8 +96,12 @@ const Sidebar = ({ classes, theme, expanded, handleChange, handleDrawerToggle, .
     <div>
       <div className={classes.toolbar} />
       <Divider />
-      <HasChildrenItem handleChange={handleChange} expanded={expanded} />
-      <HasNoChildrenItem />
+      {sidebarItems.map(route => {
+        if(isEmpty(route.items)) {
+          return <HasNoChildrenItem {...route} />;
+        }
+        return <HasChildrenItem handleChange={handleChange} expanded={expanded} {...route} />
+      })}
     </div>
   );
 

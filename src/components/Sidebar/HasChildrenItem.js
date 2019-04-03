@@ -46,20 +46,20 @@ const styles = theme => ({
   },
 });
 
-const HasChildrenItem = ({expanded, handleChange}) => (
+const HasChildrenItem = ({classes, label, items, expanded, handleChange}) => (
   <ExpansionPanel
     square
     expanded={expanded === "panel1"}
     onChange={handleChange("panel1")}
   >
     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-      <Typography>Home</Typography>
+      <Typography>{label}</Typography>
     </ExpansionPanelSummary>
     <ExpansionPanelDetails style={{padding: 0}} >
       <List>
-        {[0, 1, 2, 3].map(value => (
-          <ListItem key={value} divider button style={{paddingLeft: 40}}>
-            <ListItemText primary={`Line item ${value + 1}`} />
+        {items.map(item => (
+          <ListItem key={item.path} divider button style={{paddingLeft: 40}}>
+            <ListItemText primary={item.label} />
             <ArrowRightIcon />
           </ListItem>
         ))}
