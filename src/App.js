@@ -1,82 +1,98 @@
-import React, { PureComponent } from 'react';
-import Login from './containers/LoginContainer';
-import routes from './routes';
-import Navbar from "components/Navbars/Navbar.jsx";
-import Footer from "components/Footer/Footer.jsx";
-import Sidebar from "components/Sidebar/Sidebar.jsx";
+import React from "react";
+import PropTypes from "prop-types";
+import Navbar from "components/Navbar";
+import Sidebar from "components/Sidebar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { withStyles } from "@material-ui/core/styles";
+import { Switch, Route } from "react-router";
+import Home from "containers/HomeContainer";
 
-import image from "assets/img/sidebar-2.jpg";
-import logo from "assets/img/reactlogo.png";
-import { Switch, Route } from 'react-router';
+const drawerWidth = 240;
 
-import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
-import { withStyles } from '@material-ui/core';
-
-const switchRoutes = (
-  <Switch>
-    {routes.map((prop, key) => {
-      return (
-        <Route
-          path={prop.layout + prop.path}
-          component={prop.component}
-          key={key}
-        />
-      );
-    })}
-  </Switch>
-);
-
-class App extends PureComponent {
-  constructor(props){
-    super(props);
-    this.state = {
-      image: image,
-      color: "blue",
-      hasImage: true,
-      fixedClasses: "dropdown show",
-      mobileOpen: false
-    };
+const styles = theme => ({
+  root: {
+    display: "flex"
+  },
+  drawer: {
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0
+    }
+  },
+  appBar: {
+    marginLeft: drawerWidth,
+    [theme.breakpoints.up("sm")]: {
+      width: `calc(100% - ${drawerWidth}px)`
+    }
+  },
+  menuButton: {
+    marginRight: 20,
+    [theme.breakpoints.up("sm")]: {
+      display: "none"
+    }
+  },
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3,
+    backgroundColor: '#FFF',
+    width: '100%',
+    height: '100vh'
   }
+});
+
+class App extends React.Component {
+  state = {
+    mobileOpen: false,
+    expanded: "panel1"
+  };
 
   handleDrawerToggle = () => {
-    this.setState({ mobileOpen: !this.state.mobileOpen });
+    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+  };
+
+  handleChange = panel => (event, expanded) => {
+    this.setState({
+      expanded: expanded ? panel : false
+    });
   };
 
   render() {
-    const { classes, ...rest } = this.props;
-    const hasLogin = this.props.user.getIn(['login', 'ok']);
-    if(!hasLogin) {
-      return <Login />
-    }
+    const { classes, theme, container } = this.props;
+    const { expanded, mobileOpen } = this.state;
 
     return (
-      <Switch>
-      <div>
-        <Navbar
-          routes={routes}
-          handleDrawerToggle={this.handleDrawerToggle}
-          // color='primary'
-          {...rest}
-        />
+      <div className={classes.root}>
+        <CssBaseline />
+        <Navbar />
         <Sidebar
-          routes={routes}
-          logoText={"Creative Tim"}
-          logo={logo}
-          image={image}
+          expanded={expanded}
+          handleChange={this.handleChange}
+          container={container}
+          mobileOpen={mobileOpen}
           handleDrawerToggle={this.handleDrawerToggle}
-          open={this.state.mobileOpen}
-          color='primary'
-          {...rest}
         />
-        
-        <div className={classes.content}>
-          <div className={classes.container}>{switchRoutes}</div>
-        </div>
-        <Footer />
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route component={() => <div>404</div>} />
+          </Switch>
+        </main>
       </div>
-      </Switch>
     );
   }
 }
 
-export default withStyles(dashboardStyle)(App);
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+  // Injected by the documentation to work in an iframe.
+  // You won't need it on your project.
+  container: PropTypes.object,
+  theme: PropTypes.object.isRequired
+};
+
+export default withStyles(styles, { withTheme: true })(App);

@@ -5,9 +5,16 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import App from './containers/AppContainer';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { WebGLRenderer } from 'three';
 
 import "assets/css/material-dashboard-react.css?v=1.6.0";
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
 
 const rootEl = document.getElementById('root')
 const renderer = new WebGLRenderer({antialias: true})
@@ -15,11 +22,13 @@ const renderer = new WebGLRenderer({antialias: true})
 const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
+  <MuiThemeProvider theme={theme}>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  </MuiThemeProvider>,
   rootEl
 );
 
