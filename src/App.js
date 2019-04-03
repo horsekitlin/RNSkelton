@@ -61,7 +61,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { classes, theme, container } = this.props;
+    const { classes, container } = this.props;
     const { expanded, mobileOpen } = this.state;
 
     return (
