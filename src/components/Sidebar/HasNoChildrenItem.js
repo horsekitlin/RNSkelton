@@ -3,6 +3,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Typography from "@material-ui/core/Typography";
 import { ExpansionPanel, ExpansionPanelSummary } from './Panels';
 import { Icon } from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -42,13 +43,14 @@ const styles = theme => ({
   },
 });
 
-const HasNoChildrenItem = ({classes, label, icon}) => (
+const HasNoChildrenItem = ({classes, label, icon, routePath}) => (
   <ExpansionPanel
     className={classes.listContainer}
     square={false}
     expanded={false}
   >
-    <ExpansionPanelSummary>
+    <ExpansionPanelSummary component={Link}
+    to={routePath}>
       <Icon style={{color: '#FFF'}}>
         {icon}
       </Icon>

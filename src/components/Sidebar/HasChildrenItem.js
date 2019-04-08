@@ -5,6 +5,7 @@ import ArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import ListItemText from "@material-ui/core/ListItemText";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
+import {Link} from 'react-router-dom';
 import { ExpansionPanel, ExpansionPanelSummary } from './Panels';
 import { ExpansionPanelDetails, withStyles } from '@material-ui/core';
 
@@ -58,7 +59,7 @@ const HasChildrenItem = ({classes, label, items, expanded, routeKey, routePath, 
     <ExpansionPanelDetails style={{padding: 0}} >
       <List>
         {items.map(item => (
-          <ListItem key={`${routeKey}${item.key}`} divider button style={{paddingLeft: 40}}>
+          <ListItem key={`${routeKey}${item.key}`} component={Link} to={`${routePath}${item.path}`} divider button style={{paddingLeft: 40}}>
             <ListItemText primary={item.label} />
             <ArrowRightIcon />
           </ListItem>

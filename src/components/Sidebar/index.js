@@ -29,10 +29,10 @@ const sidebarItems = [
     path: '/independent/channel',
     items: [
       {label: '订单管理', path: '/order',key: 'Order'},
-      {label: '兼职人员', path: '/transactions',key: 'PartTime',},
-      {label: '充值纪录', path: '/transactions',key: 'RechargeRecord',},
-      {label: '帐户信息', path: '/transactions',key: 'AccountMessage'},
-      {label: '余额明细', path: '/transactions',key: 'BalanceDetails'},
+      {label: '兼职人员', path: '/part/time',key: 'PartTime',},
+      {label: '充值纪录', path: '/recharge/record',key: 'RechargeRecord',},
+      {label: '帐户信息', path: '/account/message',key: 'AccountMessage'},
+      {label: '余额明细', path: '/balance/details',key: 'BalanceDetails'},
     ],
   },{
     key: 'thirdPartyChannel',
@@ -41,8 +41,8 @@ const sidebarItems = [
     path: '/third/party/channel',
     items: [
       {label: '订单管理', path: '/order', key: 'Order'},
-      {label: '结算纪录', path: '/transactions', key: 'SettlementRecord'},
-      {label: '款项提现', path: '/transactions',  key: 'CashWithdrawal'},
+      {label: '结算纪录', path: '/settlement/record', key: 'SettlementRecord'},
+      {label: '款项提现', path: '/cash/withdrawal',  key: 'CashWithdrawal'},
     ],
   },{
     key: 'systemSetting',
@@ -50,11 +50,11 @@ const sidebarItems = [
     icon: 'notifications',
     path: '/system/setting',
     items: [
-      {label: '商家信息', path: '/order', key: 'BusinessInformation'},
-      {label: '用户信息', path: '/transactions', key: 'UserMessage'},
-      {label: '后台用户', path: '/transactions', key: 'ConsoleUsers'},
-      {label: '角色权限', path: '/transactions', key: 'UserPermission'},
-      {label: '应用设置', path: '/transactions', key: 'AppSetting'},
+      {label: '商家信息', path: '/business/information', key: 'BusinessInformation'},
+      {label: '用户信息', path: '/user/message', key: 'UserMessage'},
+      {label: '后台用户', path: '/console/user', key: 'ConsoleUsers'},
+      {label: '角色权限', path: '/user/permission', key: 'UserPermission'},
+      {label: '应用设置', path: '/app/setting', key: 'AppSetting'},
     ],
   },
 ];
@@ -108,10 +108,20 @@ class Sidebar extends React.Component {
         <div className={classes.toolbar} />
         <Divider />
         {sidebarItems.map(route => {
+          const {key, path, label, icon, items} = route;
+
           if(isEmpty(route.items)) {
-            return <HasNoChildrenItem {...route} />;
+
+            return (
+              <HasNoChildrenItem
+                key={key}
+                icon={icon}
+                routeKey={key}
+                routePath={path}
+                label={label}
+              />
+            );
           }
-          const {key, path, label, items} = route;
           return (
             <HasChildrenItem
               key={key}
