@@ -46,11 +46,11 @@ const styles = theme => ({
   },
 });
 
-const HasChildrenItem = ({classes, label, items, expanded, handleChange}) => (
+const HasChildrenItem = ({classes, label, items, expanded, routeKey, routePath, handleChange}) => (
   <ExpansionPanel
     square
-    expanded={expanded === "panel1"}
-    onChange={handleChange("panel1")}
+    expanded={expanded === routeKey}
+    onChange={handleChange(routeKey)}
   >
     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
       <Typography>{label}</Typography>
@@ -58,7 +58,7 @@ const HasChildrenItem = ({classes, label, items, expanded, handleChange}) => (
     <ExpansionPanelDetails style={{padding: 0}} >
       <List>
         {items.map(item => (
-          <ListItem key={item.path} divider button style={{paddingLeft: 40}}>
+          <ListItem key={`${routeKey}${item.key}`} divider button style={{paddingLeft: 40}}>
             <ListItemText primary={item.label} />
             <ArrowRightIcon />
           </ListItem>

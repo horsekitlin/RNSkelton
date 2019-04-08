@@ -45,19 +45,24 @@ const styles = theme => ({
 });
 
 class App extends React.Component {
-  state = {
-    mobileOpen: false,
-    expanded: "panel1"
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobileOpen: false,
+      expanded: ""
+    }; 
+  }
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
   handleChange = panel => (event, expanded) => {
-    this.setState({
-      expanded: expanded ? panel : false
-    });
+    event.stopPropagation();
+    this.setState(state => ({
+      ...state,
+      expanded:  panel
+    }));
   };
 
   render() {
@@ -67,7 +72,7 @@ class App extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <Navbar />
+        <Navbar handleDrawerToggle={this.handleDrawerToggle} />
         <Sidebar
           expanded={expanded}
           handleChange={this.handleChange}

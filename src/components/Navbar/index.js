@@ -28,7 +28,7 @@ const styles = theme => ({
 
 class Navbar extends React.PureComponent {
   render() {
-    const {classes} = this.props;
+    const {classes, handleDrawerToggle} = this.props;
 
     return (
       <AppBar position="fixed" className={classes.appBar}>
@@ -36,7 +36,7 @@ class Navbar extends React.PureComponent {
           <IconButton
             color="inherit"
             aria-label="Open drawer"
-            onClick={this.handleDrawerToggle}
+            onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
             <MenuIcon />
