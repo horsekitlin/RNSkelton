@@ -12,6 +12,9 @@ import "assets/css/material-dashboard-react.css?v=1.6.0";
 
 const theme = createMuiTheme({
   palette: {
+    primary: {
+      main: '#3DBBC6'
+    },
     type: 'dark',
   },
 });
