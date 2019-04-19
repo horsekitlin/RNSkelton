@@ -42,7 +42,7 @@ class Navbar extends React.PureComponent {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" style={{flexGrow: 1}} noWrap>
-            Your Store Name
+            運營後台
           </Typography>
           <div style={{display: 'flex', alignItems: 'center'}}>
             <IconButton>

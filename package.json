@@ -13,6 +13,7 @@
     "perfect-scrollbar": "^1.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.2.0",
+    "react-datepicker": "^2.3.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
