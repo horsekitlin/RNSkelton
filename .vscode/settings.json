@@ -1,0 +1,21 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": true,
+  "editor.detectIndentation": false,
+  "javascript.preferences.quoteStyle": "single",
+  "prettier.singleQuote": true,
+  "git.ignoreLimitWarning": true,
+  "editor.renderWhitespace": "boundary",
+  "jshint.options": {
+    "esversion": 6
+  },
+  "turboConsoleLog.quote": "'",
+  "prettier.jsxSingleQuote": true,
+  "typescript.preferences.quoteStyle": "single",
+  "prettier.trailingComma": "all",
+  "eslint.packageManager": "yarn",
+  "scss.lint.duplicateProperties": "warning",
+  "css.lint.duplicateProperties": "warning",
+  "prettier.eslintIntegration": true,
+  "eslint.enable": false,
+}
