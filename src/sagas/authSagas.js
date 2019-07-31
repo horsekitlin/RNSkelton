@@ -16,7 +16,7 @@ const errLogin = ({ message, status }) => {
 
 export function* loginSaga({ payload }) {
   try {
-
+    console.log('login saga');
     const resAction = true ? okLogin() : errLogin();
 
     yield put(resAction);

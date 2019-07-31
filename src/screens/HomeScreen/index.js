@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
-import { Text } from 'react-native';
+import { Text } from 'react-native-elements';
 
 const HomeScreen = () => (
   <Fragment>
-    <Text>Home Screen</Text>
+    <Text h1>Home Screen</Text>
   </Fragment>
 );
 
