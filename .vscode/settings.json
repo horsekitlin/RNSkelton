@@ -1,6 +1,6 @@
 {
   "editor.tabSize": 2,
-  "editor.formatOnPaste": true,
+  "editor.formatOnPaste": false,
   "editor.detectIndentation": false,
   "javascript.preferences.quoteStyle": "single",
   "prettier.singleQuote": true,
@@ -9,13 +9,8 @@
   "jshint.options": {
     "esversion": 6
   },
-  "turboConsoleLog.quote": "'",
-  "prettier.jsxSingleQuote": true,
-  "typescript.preferences.quoteStyle": "single",
+  "turboConsoleLog.quote": "\"",
+  "prettier.jsxSingleQuote": false,
   "prettier.trailingComma": "all",
-  "eslint.packageManager": "yarn",
-  "scss.lint.duplicateProperties": "warning",
-  "css.lint.duplicateProperties": "warning",
-  "prettier.eslintIntegration": true,
-  "eslint.enable": false,
+  "eslint.packageManager": "yarn"
 }

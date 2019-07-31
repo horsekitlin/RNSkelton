@@ -1,7 +1,12 @@
 import constants from 'flux-constants';
 
+const syncActionTypes = [
+
+];
+
 const basicAsyncActionTypes = [
   'LOGIN',
+  'INITIAL_APP'
 ];
 
 const asyncActionTypes = basicAsyncActionTypes.reduce((result, actionType) => {
@@ -13,4 +18,4 @@ const asyncActionTypes = basicAsyncActionTypes.reduce((result, actionType) => {
   ];
 }, []);
 
-export default constants(asyncActionTypes);
+export default constants([...asyncActionTypes, ...syncActionTypes]);
