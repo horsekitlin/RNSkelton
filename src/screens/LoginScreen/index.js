@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Input, Button } from 'react-native-elements';
+import { ReducerContext } from '../../reducers';
+
+function mockFetch() {
+  return new Promise(resolve => {
+    setTimeout(resolve, 2000);
+  });
+}
 
 const LoginScreen = props => {
-  const { navigation, isAuth } = props;
-  useEffect(() => {
-    if (isAuth) navigation.navigate('Home');
-  }, [isAuth]);
+  const [{auth}, dispatch] = useContext(ReducerContext);
 
-  const handleLogin = () => props.handleLogin();
+  const handleLogin = () => dispatch({types: ['LOGIN', 'LOGIN_SUCCESS', 'LOGIN_ERROR'], promise: mockFetch()});
 
   return (
     <View style={styles.container}>
