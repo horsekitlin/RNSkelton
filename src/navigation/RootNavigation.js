@@ -5,7 +5,7 @@ import { Icon, ThemeContext } from 'react-native-elements';
 import HomeContainer from '../containers/HomeContainer';
 import LoginContainer from '../containers/LoginContainer';
 
-const RootNavigation = () => {
+const RootNavigation = (props) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -14,7 +14,7 @@ const RootNavigation = () => {
       navigationBarStyle={{ backgroundColor: theme.colors.grey1 }}
     >
       <Stack key='root' hideNavBar>
-        <Stack key='login_stack'>
+        <Stack key='login_stack' initial={!props.isAuth}>
           <Scene
             hideNavBar
             title='登入'
@@ -23,9 +23,10 @@ const RootNavigation = () => {
           />
         </Stack>
         <Tabs
+          initial={props.isAuth}
           key='tabbar'
           routeName='tabbar'
-          backToInitial
+          // backToInitial
           tabStyle={{
             backgroundColor: theme.colors.grey1,
             paddingTop: 8
@@ -36,9 +37,10 @@ const RootNavigation = () => {
           inactiveTintColor={theme.colors.grey4}
         >
           <Stack
+          initial
             key='home'
             title='聊天'
-            icon={<Icon name='heart' type='font-awesome' />}
+            icon={() => <Icon name='heart' type='font-awesome' />}
           >
             <Scene key='home' component={HomeContainer} title='聊天' />
           </Stack>

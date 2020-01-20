@@ -2,13 +2,13 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import {ThemeProvider} from 'react-native-elements';
 import store from './store/configureStore';
-import RootNavigation from './navigation/RootNavigation';
+import RootNavigationContainer from './containers/RootNavigationContainer';
 
 const App = () => {
   return (
     <Provider store={store}>
       <ThemeProvider>
-        <RootNavigation />
+        <RootNavigationContainer />
       </ThemeProvider>
     </Provider>
   );
