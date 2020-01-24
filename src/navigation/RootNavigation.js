@@ -4,6 +4,7 @@ import { Router, Stack, Scene, Tabs } from 'react-native-router-flux';
 import { Icon, ThemeContext } from 'react-native-elements';
 import HomeContainer from '../containers/HomeContainer';
 import LoginContainer from '../containers/LoginContainer';
+import RegisterContainer from '../containers/RegisterContainer';
 
 const RootNavigation = (props) => {
   const { theme } = useContext(ThemeContext);
@@ -16,10 +17,14 @@ const RootNavigation = (props) => {
       <Stack key='root' hideNavBar>
         <Stack key='login_stack' initial={!props.isAuth}>
           <Scene
-            hideNavBar
             title='登入'
             key='login'
             component={LoginContainer}
+          />
+          <Scene
+            title='註冊'
+            key='register'
+            component={RegisterContainer}
           />
         </Stack>
         <Tabs

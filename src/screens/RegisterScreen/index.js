@@ -1,23 +1,11 @@
 import React, { useEffect } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import firebase from 'react-native-firebase';
-console.log("TCL: firebase", firebase)
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Input, Button } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 
 const LoginScreen = props => {
   const { navigation, isAuth } = props;
-  useEffect(() => {
-    // firebase.auth()
-    console.log("TCL: firebase.auth()", firebase.auth())
-  // .verifyPhoneNumber('0987654321')
-  // .then(result => console.log("TCL: result", result))
-  // .catch(error => console.log("TCL: error", error))
-  
-
-    if (isAuth) navigation.navigate('Home');
-  }, [isAuth]);
 
   const handleLogin = () => props.handleLogin();
 
@@ -38,14 +26,14 @@ const LoginScreen = props => {
       />
       <Button
         buttonStyle={styles.button}
-        title="Login"
+        title="Register"
         onPress={handleLogin}
       />
       <Button
         type="clear"
         buttonStyle={styles.button}
-        title="Register"
-        onPress={() => Actions.register()}
+        title="Cancel"
+        onPress={Actions.pop}
       />
     </View>
   );
