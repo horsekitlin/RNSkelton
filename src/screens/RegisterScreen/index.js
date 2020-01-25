@@ -6,9 +6,6 @@ import { Actions } from 'react-native-router-flux';
 
 const LoginScreen = props => {
   const { navigation, isAuth } = props;
-  useEffect(() => {
-    if (isAuth) navigation.navigate('Home');
-  }, [isAuth]);
 
   const handleLogin = () => props.handleLogin();
 
@@ -29,14 +26,14 @@ const LoginScreen = props => {
       />
       <Button
         buttonStyle={styles.button}
-        title="Login"
+        title="Register"
         onPress={handleLogin}
       />
       <Button
         type="clear"
         buttonStyle={styles.button}
-        title="Register"
-        onPress={() => Actions.register()}
+        title="Cancel"
+        onPress={Actions.pop}
       />
     </View>
   );

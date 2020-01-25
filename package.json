@@ -3,6 +3,8 @@
   "version": "6.2.0",
   "private": true,
   "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "start": "react-native start",
     "run:android": "react-native run-android",
     "run:ios": "react-native run-ios --simulator=\"iPhone X\"",
