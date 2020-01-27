@@ -17,10 +17,19 @@ const configureStore = () => {
   );
 
   if (__DEV__) {
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers/index').default;
+    var acceptCallback = () => {
+      const nextRootReducer = combineReducers(require('../reducers/index'));
       store.replaceReducer(nextRootReducer);
-    });
+    }
+  
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('../reducers/index', acceptCallback);
+    module.hot.acceptCallback = acceptCallback;
+
+    // module.hot.accept('../reducers', () => {
+    //   const nextRootReducer = require('../reducers/index').default;
+    //   store.replaceReducer(nextRootReducer);
+    // });
   }
   return {
     ...store,

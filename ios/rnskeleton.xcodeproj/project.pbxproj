@@ -20,7 +20,7 @@
 		5DDF534687D6852A039C063E /* libPods-rnskeleton-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D48A5B167872785C083560 /* libPods-rnskeleton-tvOSTests.a */; };
 		C30329014D6B3BB35FCAD648 /* libPods-rnskeleton-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F429AFEDD0A64588B3B1D47A /* libPods-rnskeleton-tvOS.a */; };
 		C3BA8A29C402121C942BD618 /* libPods-rnskeleton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A8100EA16BCBC13D347383 /* libPods-rnskeleton.a */; };
-		C3FFBAF723DBFCEE00D69CE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3FFBAF623DBFCEE00D69CE0 /* GoogleService-Info.plist */; };
+		C3FFBAF923DDF8C400D69CE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3FFBAF823DDF8C400D69CE0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		6EBA84563968BC20618C4F34 /* Pods-rnskeleton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnskeleton.debug.xcconfig"; path = "Target Support Files/Pods-rnskeleton/Pods-rnskeleton.debug.xcconfig"; sourceTree = "<group>"; };
 		93D48A5B167872785C083560 /* libPods-rnskeleton-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnskeleton-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E282F0DBEDF11CE9D6E3D2 /* Pods-rnskeleton-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnskeleton-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-rnskeleton-tvOSTests/Pods-rnskeleton-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		C3FFBAF623DBFCEE00D69CE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C3FFBAF823DDF8C400D69CE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1776E1FC99BDC7C8614B4C6 /* Pods-rnskeleton-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnskeleton-tvOS.release.xcconfig"; path = "Target Support Files/Pods-rnskeleton-tvOS/Pods-rnskeleton-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		D50D85FABD0748355FB29453 /* Pods-rnskeletonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnskeletonTests.release.xcconfig"; path = "Target Support Files/Pods-rnskeletonTests/Pods-rnskeletonTests.release.xcconfig"; sourceTree = "<group>"; };
 		E98BB808AA2616C4F6E2F90B /* Pods-rnskeleton-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnskeleton-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-rnskeleton-tvOSTests/Pods-rnskeleton-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,8 +129,8 @@
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				C3FFBAF623DBFCEE00D69CE0 /* GoogleService-Info.plist */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				C3FFBAF823DDF8C400D69CE0 /* GoogleService-Info.plist */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -347,7 +347,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				C3FFBAF723DBFCEE00D69CE0 /* GoogleService-Info.plist in Resources */,
+				C3FFBAF923DDF8C400D69CE0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

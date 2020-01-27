@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Avatar, Input, Button } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 
-const LoginScreen = props => {
+const RegisterScreen = props => {
   const { navigation, isAuth } = props;
 
   const handleLogin = () => props.handleLogin();
@@ -17,12 +17,6 @@ const LoginScreen = props => {
         inputContainerStyle={{ borderBottomWidth: 0 }}
         placeholder="Phone Number"
         leftIcon={<Icon name="user" size={24} color="black" />}
-      />
-      <Input
-        containerStyle={styles.inputContainer}
-        inputContainerStyle={{ borderBottomWidth: 0 }}
-        placeholder="Password"
-        leftIcon={<Icon name="lock" size={24} color="black" />}
       />
       <Button
         buttonStyle={styles.button}
@@ -39,7 +33,7 @@ const LoginScreen = props => {
   );
 };
 
-LoginScreen.navigationOptions = {
+RegisterScreen.navigationOptions = {
   header: null,
 };
 
@@ -58,4 +52,4 @@ const styles = StyleSheet.create({
   },
   button: { width: 300, borderRadius: 25, margin: 5 }
 });
-export default LoginScreen;
+export default RegisterScreen;
