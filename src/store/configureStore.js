@@ -25,7 +25,9 @@ const configureStore = () => {
   if (__DEV__) {
     module.hot.accept(() => {
       const nextRootReducer = require('../reducers/index').default;
-      store.replaceReducer(nextRootReducer);
+      store.replaceReducer(
+        persistReducer(persistConfig, nextRootReducer)
+      )
     });
   }
   return {
