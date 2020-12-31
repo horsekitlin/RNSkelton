@@ -1,16 +1,27 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import AsyncStorage from '@react-native-community/async-storage';
+import {createStore, applyMiddleware, compose} from 'redux';
+import {persistStore, persistReducer} from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from '~/reducers';
 import rootSaga from '~/sagas';
+
+const persistConfig = {
+  key: 'storeCache',
+  storage: AsyncStorage,
+  blacklist: ['auth'],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware({});
   const middlewares = [sagaMiddleware];
   const store = createStore(
-    rootReducer,
-    compose(applyMiddleware(...middlewares))
+    persistedReducer,
+    compose(applyMiddleware(...middlewares)),
   );
 
+  const persistor = persistStore(store);
   if (__DEV__) {
     module.hot.accept(() => {
       const nextRootReducer = require('../reducers/index').default;
@@ -18,11 +29,15 @@ const configureStore = () => {
     });
   }
   return {
-    ...store,
-    runSaga: sagaMiddleware.run(rootSaga),
+    persistor,
+    store: {
+      ...store,
+      runSaga: sagaMiddleware.run(rootSaga),
+    },
   };
 };
 
-const store = configureStore();
+const {store, persistor} = configureStore();
 
+export { persistor };
 export default store;

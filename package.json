@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "appcenter": "^4.0.2",
     "appcenter-analytics": "^4.0.2",
     "appcenter-crashes": "^4.0.2",
@@ -23,6 +24,7 @@
     "react-native-vector-icons": "^7.1.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
     "redux-saga": "^1.1.3"
   },
   "devDependencies": {
