@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-firebase/app": "^10.4.0",
+    "@react-native-firebase/messaging": "^10.4.0",
     "appcenter": "^4.0.2",
     "appcenter-analytics": "^4.0.2",
     "appcenter-crashes": "^4.0.2",

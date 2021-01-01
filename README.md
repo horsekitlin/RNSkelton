@@ -23,7 +23,7 @@ appcenter 需要增加幾行程式碼
 
 ### Android
 
-appcenter-config.json
+android/app/src/main/assets/appcenter-config.json
 
 ```json
 {
