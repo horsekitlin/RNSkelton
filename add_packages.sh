@@ -19,7 +19,7 @@ echo "Packages..."
 yarn add flux-constants immutable
 
 echo "Dev Packages..."
-yarn add -D babel-plugin-root-import
+yarn add -D babel-plugin-root-import redux-flipper react-native-flipper
 
 echo "add pod Packages..."
 npx pod-install

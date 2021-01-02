@@ -16,6 +16,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware({});
   const middlewares = [sagaMiddleware];
+
+  if (__DEV__) {
+    const createDebugger = require('redux-flipper').default;
+    middlewares.push(createDebugger());
+  }
+  
   const store = createStore(
     persistedReducer,
     compose(applyMiddleware(...middlewares)),

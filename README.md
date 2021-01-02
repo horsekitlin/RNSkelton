@@ -39,3 +39,7 @@ res/values/strings.xml
 ```
 
 https://appcenter.ms/users/${account}/apps/${project}
+
+## Flipper
+
+[redux-devtool](https://github.com/jk-gan/redux-flipper)
