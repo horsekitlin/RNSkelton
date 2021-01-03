@@ -1,26 +1,49 @@
 // In index.js of a new project
-import React from 'react';
-import { Container, Content, Button, Text } from 'native-base';
-import { Navigation } from 'react-native-navigation';
+import React, {useState} from 'react';
+import {
+  Container,
+  Content,
+  Button,
+  Header,
+  Text,
+  Icon,
+  Item,
+  Input,
+  List,
+  ListItem,
+} from 'native-base';
 
 const HomeScreen = (props) => {
+  const [tasks, setTasks] = useState([]);
+  const [taskTitle, setTaskTitle] = useState('');
+
   return (
     <Container>
       <Content>
-        <Button onPress={() => Navigation.push(props.componentId, {
-          component: {
-            name: 'Setting',
-            options: {
-              topBar: {
-                title: {
-                  text: 'Setting'
-                }
-              }
+        <Header searchBar rounded>
+          <Item>
+            <Icon name="tasks" type="FontAwesome" />
+            <Input placeholder="Task" value={taskTitle} onChangeText={text => setTaskTitle(text)}/>
+          </Item>
+          <Button transparent onPress={() => {
+            if(taskTitle !== ''){
+              setTasks([...tasks, {title: taskTitle}]);
+              setTaskTitle('');
             }
-          }
-        })}>
-          <Text>Setting</Text>
-        </Button>
+          }}>
+            <Text>Add</Text>
+          </Button>
+        </Header>
+
+        <List>
+          {tasks.map((task, index) => {
+            return (
+              <ListItem>
+                <Text>{task.title}</Text>
+              </ListItem>
+            );
+          })}
+        </List>
       </Content>
     </Container>
   );
@@ -29,12 +52,12 @@ const HomeScreen = (props) => {
 HomeScreen.options = {
   topBar: {
     title: {
-      text: 'Home'
-    }
+      text: 'Home',
+    },
   },
   bottomTab: {
-    text: 'Home'
-  }
+    text: 'Home',
+  },
 };
 
 export default HomeScreen;
