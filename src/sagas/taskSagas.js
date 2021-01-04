@@ -32,7 +32,6 @@ export function* addTaskSaga({ payload }) {
     };
     yield put(okAdd(newTask));
   } catch (error) {
-    console.log('🚀 ~ file: taskSagas.js ~ line 35 ~ function*addTaskSaga ~ error', error)
     const errorAction = errAdd(error);
     yield put(errorAction);
   }
