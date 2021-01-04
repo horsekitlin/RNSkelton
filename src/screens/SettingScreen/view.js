@@ -1,26 +1,60 @@
 // In index.js of a new project
-import React from 'react';
-import { Container, Content, Button, Text } from 'native-base';
-import { Navigation } from 'react-native-navigation';
+import React, { useState } from 'react';
+import { Container, Header, Content, Button, ListItem, Text, Icon, Left, Body, Right, Switch } from 'native-base';
 
 const SettingScreen = (props) => {
+  const [settings, setSettings] = useState({
+    airPlaneMode: false,
+    wifi: false,
+    bluetooth: false,
+  });
+
   return (
     <Container>
+      <Header />
       <Content>
-        <Button onPress={() => Navigation.push(props.componentId, {
-          component: {
-            name: 'Home',
-            options: {
-              topBar: {
-                title: {
-                  text: 'Home'
-                }
-              }
-            }
-          }
-        })}>
-          <Text>Home</Text>
-        </Button>
+        <ListItem icon>
+          <Left>
+            <Button style={{ backgroundColor: "#FF9501" }}>
+              <Icon active name="airplane" />
+            </Button>
+          </Left>
+          <Body>
+            <Text>Airplane Mode</Text>
+          </Body>
+          <Right>
+            <Switch value={settings.airPlaneMode} onValueChange={value => setSettings({ ...settings, airPlaneMode: value })} />
+            <Text>{ settings.airPlaneMode? 'On': 'Off'}</Text>
+          </Right>
+        </ListItem>
+        <ListItem icon>
+          <Left>
+            <Button style={{ backgroundColor: "#007AFF" }}>
+              <Icon active name="wifi" />
+            </Button>
+          </Left>
+          <Body>
+            <Text>Wi-Fi</Text>
+          </Body>
+          <Right>
+            <Switch value={settings.wifi} onValueChange={value => setSettings({ ...settings, wifi: value })} />
+            <Text>{ settings.wifi? 'On': 'Off'}</Text>
+          </Right>
+        </ListItem>
+        <ListItem icon>
+          <Left>
+            <Button style={{ backgroundColor: "#007AFF" }}>
+              <Icon active name="bluetooth" onValueChange={value => console.log("value: ", value)} />
+            </Button>
+          </Left>
+          <Body>
+            <Text>Bluetooth</Text>
+          </Body>
+          <Right>
+            <Switch value={settings.bluetooth} onValueChange={value => setSettings({ ...settings, bluetooth: value })} />
+            <Text>{settings.bluetooth ? 'On' : 'Off'}</Text>
+          </Right>
+        </ListItem>
       </Content>
     </Container>
   );
