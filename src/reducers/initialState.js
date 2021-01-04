@@ -1,5 +1,7 @@
-import { fromJS } from 'immutable';
-
-export const authState = fromJS({
+export const authState = {
   isAuth: true,
-});
+};
+
+export const taskState = {
+  list: []
+};

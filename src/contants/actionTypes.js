@@ -5,7 +5,10 @@ const syncActionTypes = [];
 const basicAsyncActionTypes = [
   'LOGIN',
   'LOGOUT',
-  'INITIAL_APP'
+  'INITIAL_APP',
+  'ADD_TASK',
+  'DELETE_TASK',
+  'COMPLETE_TASK',
 ];
 
 const asyncActionTypes = basicAsyncActionTypes.reduce((result, actionType) => {

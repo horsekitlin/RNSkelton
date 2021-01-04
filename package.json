@@ -17,7 +17,6 @@
     "appcenter-analytics": "^4.0.2",
     "appcenter-crashes": "^4.0.2",
     "flux-constants": "^0.2.2",
-    "immutable": "^4.0.0-rc.12",
     "native-base": "^2.15.0",
     "react": "16.13.1",
     "react-native": "0.63.4",

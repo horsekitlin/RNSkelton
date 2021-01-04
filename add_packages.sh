@@ -16,7 +16,7 @@ echo "Database..."
 yarn add @react-native-community/async-storage redux-persist
 
 echo "Packages..."
-yarn add flux-constants immutable
+yarn add flux-constants
 
 echo "Dev Packages..."
 yarn add -D babel-plugin-root-import redux-flipper react-native-flipper

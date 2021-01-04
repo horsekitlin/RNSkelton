@@ -21,7 +21,6 @@ const renderItem = (task) => {
 }
 
 const HomeScreen = (props) => {
-  const [tasks, setTasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState('');
 
   return (
@@ -33,7 +32,8 @@ const HomeScreen = (props) => {
           </Item>
           <Button transparent onPress={() => {
             if(taskTitle !== ''){
-              setTasks([...tasks, {title: taskTitle}]);
+              const payload = {title: taskTitle};
+              props.handleAddTask(payload);
               setTaskTitle('');
             }
           }}>
@@ -42,7 +42,7 @@ const HomeScreen = (props) => {
         </Header>
 
         <List
-          dataArray={tasks}
+          dataArray={props.tasks}
           keyExtractor={item => item.title}
           renderRow={renderItem} />
     </Container>

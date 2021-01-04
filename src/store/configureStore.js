@@ -8,7 +8,7 @@ import rootSaga from '~/sagas';
 const persistConfig = {
   key: 'storeCache',
   storage: AsyncStorage,
-  blacklist: ['auth'],
+  blacklist: [],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
