@@ -2,7 +2,6 @@
 import React, {useState} from 'react';
 import {
   Container,
-  Content,
   Button,
   Header,
   Text,
@@ -13,13 +12,20 @@ import {
   ListItem,
 } from 'native-base';
 
+const renderItem = (task) => {
+  return (
+    <ListItem>
+      <Text>{task.title}</Text>
+    </ListItem>
+  );
+}
+
 const HomeScreen = (props) => {
   const [tasks, setTasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState('');
 
   return (
     <Container>
-      <Content>
         <Header searchBar rounded>
           <Item>
             <Icon name="tasks" type="FontAwesome" />
@@ -35,16 +41,10 @@ const HomeScreen = (props) => {
           </Button>
         </Header>
 
-        <List>
-          {tasks.map((task, index) => {
-            return (
-              <ListItem>
-                <Text>{task.title}</Text>
-              </ListItem>
-            );
-          })}
-        </List>
-      </Content>
+        <List
+          dataArray={tasks}
+          keyExtractor={item => item.title}
+          renderRow={renderItem} />
     </Container>
   );
 };
