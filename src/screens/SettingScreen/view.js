@@ -44,7 +44,7 @@ const SettingScreen = (props) => {
         <ListItem icon>
           <Left>
             <Button style={{ backgroundColor: "#007AFF" }}>
-              <Icon active name="bluetooth" onValueChange={value => console.log("value: ", value)} />
+              <Icon active name="bluetooth" />
             </Button>
           </Left>
           <Body>
