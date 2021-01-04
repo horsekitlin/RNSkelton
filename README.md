@@ -1,4 +1,38 @@
-# 
+# Skelton
+
+## Android build setting update
+
+build.grade
+```
+...
+buildscript {
+    ext {
+        ...
+        minSdkVersion = 21
+        ...
+    }
+...
+}
+```
+
+## Font
+
+### IOS
+
+Info.plist
+
+```xml
+<key>UIAppFonts</key>
+	<array>
+		<string>Foundation.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>AntDesign.ttf</string>
+		<string>FontAwesome.ttf</string>
+	</array>
+```
+## Appcenter
 
 appcenter 需要增加幾行程式碼
 
