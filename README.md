@@ -32,6 +32,7 @@ Info.plist
 		<string>FontAwesome.ttf</string>
 	</array>
 ```
+
 ## Appcenter
 
 appcenter 需要增加幾行程式碼
@@ -77,3 +78,7 @@ https://appcenter.ms/users/${account}/apps/${project}
 ## Flipper
 
 [redux-devtool](https://github.com/jk-gan/redux-flipper)
+
+## Trouble 
+
+[打包錯誤 library-not-found-for-lpods](https://stackoverflow.com/questions/23539147/xcode-ld-library-not-found-for-lpods?lq=1)
