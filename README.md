@@ -35,17 +35,35 @@ Info.plist
 
 ## Appcenter
 
+## Env
+
+appcenter-pre-build.sh
+```
+#!/usr/bin/env bash
+
+if [ ! -z "$GOOGLE_SERVICES_JSON" ]; then
+  echo $GOOGLE_SERVICES_JSON | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/android/app/google-services.json"
+fi
+
+if [ ! -z "$GOOGLE_SERVICES_PLIST" ]; then
+  echo $GOOGLE_SERVICES_PLIST | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/ios/foodmate/GoogleService-Info.plist"
+fi
+```
+
+
+## Setput SDK
 appcenter 需要增加幾行程式碼
 
 [add sdk step](https://docs.microsoft.com/en-us/appcenter/sdk/getting-started/react-native#33-ios-only-integrate-the-ios-sdk-manually-without-react-native-link-or-cocoapods)
 
- ## 需要增加檔案
+###
+## 需要增加檔案
 
- ### IOS
+### IOS
 
- AppCenter-Config.plist
+AppCenter-Config.plist
 
- ```xml
+```xml
  <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -54,7 +72,7 @@ appcenter 需要增加幾行程式碼
     <string>APP_SCRECT</string>
     </dict>
 </plist>
- ```
+```
 
 ### Android
 
