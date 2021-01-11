@@ -33,6 +33,10 @@ Info.plist
 	</array>
 ```
 
+### Android
+
+[setup](https://github.com/oblador/react-native-vector-icons#android)
+
 ## Appcenter
 
 ## Env
