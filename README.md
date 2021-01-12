@@ -1,5 +1,26 @@
 # Skelton
 
+## Set scripts
+
+package.json
+
+```json
+{
+  "name": "drcleaner",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    ...
+    "postJSMajorVersion": "npm version major",
+    "postJSMinorVersion": "npm version minor",
+    "postJSPatchVersion": "npm version patch",
+    "deploy:adhoc-ios": "source ./rcs/iosrc && cd android && bundle exec fastlane beta && cd ..",
+    "deploy:adhoc-android": "source ./rcs/androidrc && cd android && bundle exec fastlane beta && cd ..",
+    ...
+  }
+}
+```
+
 ## Android build setting update
 
 build.grade
@@ -113,21 +134,26 @@ https://appcenter.ms/users/${account}/apps/${project}
 
 ## Fastlane
 
-Gemfile
-
-```
-source "https://rubygems.org"
-
-gem "fastlane"
-plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
-eval_gemfile(plugins_path) if File.exist?(plugins_path)
-
-```
-
-bundle set config path
+### bundle set config path
 
 ```
 	$ bundle config set path 'vendor/bundle'
+```
+
+### IOS
+
+```
+  $ cp -a ${path}/template/rcs . && cd ios && cp -a ${path}/template/ios/Gemfile . && bundle install && bundle exec pod install && bundle exec fastlane init && cd ..
+```
+
+```
+  $ cp -a ${path}/template/ios/fastlane ./ios
+```
+
+update `${path}/rcs/iosrc`
+
+```
+  $ yarn deploy:adhoc-ios
 ```
 
 ### Android
@@ -159,28 +185,10 @@ android {
 }
 ```
 
-Fastfile
+```
+  $ cp -a ${path}/template/rcs . && cd android && cp -a ${path}/template/android/Gemfile . && bundle install && bundle exec fastlane init && cd ..
+```
 
-```ruby
-default_platform(:android)
-
-platform :android do
-  desc "Submit a new Beta Build to firebase Beta distribution"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    # crashlytics()
-    gradle(
-      task: 'assemble',
-      build_type: 'Release'
-    )
-    
-    firebase_app_distribution(
-      app: APP_ID_FROM_FIREBASE,
-      groups: GROUPS_FROM_FIREBASE,
-
-    )
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
-end
+```
+  $ cp -a ${path}/template/android/fastlane ./android
 ```
