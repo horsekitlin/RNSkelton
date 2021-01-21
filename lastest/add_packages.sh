@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Add App Center..."
+yarn add appcenter appcenter-analytics appcenter-crashes
+
 echo "Add redux..."
 yarn add redux react-redux redux-saga
 
