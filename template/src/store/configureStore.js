@@ -2,6 +2,10 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {createStore, applyMiddleware, compose} from 'redux';
 import {persistStore, persistReducer} from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
+import {
+  startFetchingMiddleware,
+  stopFetchingMiddleware
+} from '~/middlewares/fetchHandlerMiddleware';
 import rootReducer from '~/reducers';
 import rootSaga from '~/sagas';
 
@@ -15,7 +19,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware({});
-  const middlewares = [sagaMiddleware];
+  const middlewares = [startFetchingMiddleware, sagaMiddleware, stopFetchingMiddleware];
 
   if (__DEV__) {
     const createDebugger = require('redux-flipper').default;

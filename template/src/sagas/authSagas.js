@@ -1,5 +1,5 @@
 import { put } from 'redux-saga/effects';
-import types from '~/contants/actionTypes';
+import types from '~/constants/actionTypes';
 
 const okLogin = () => ({
   type: types.LOGIN_SUCCESS,

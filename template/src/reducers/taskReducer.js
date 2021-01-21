@@ -1,4 +1,4 @@
-import types from '~/contants/actionTypes';
+import types from '~/constants/actionTypes';
 import { taskState } from './initialState';
 
 export default function reducer(task = taskState, { type, payload }) {

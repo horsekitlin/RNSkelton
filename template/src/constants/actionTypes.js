@@ -2,7 +2,7 @@ import constants from 'flux-constants';
 
 const syncActionTypes = [];
 
-const basicAsyncActionTypes = [
+export const basicAsyncActionTypes = [
   'LOGIN',
   'LOGOUT',
   'INITIAL_APP',

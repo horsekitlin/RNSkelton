@@ -1,4 +1,4 @@
-import types from '~/contants/actionTypes';
+import types from '~/constants/actionTypes';
 
 export const addTaskAction = (payload) => ({
   type: types.ADD_TASK,

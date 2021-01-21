@@ -1,4 +1,4 @@
-import types from '~/contants/actionTypes';
+import types from '~/constants/actionTypes';
 import { takeLatest, take, call, actionChannel } from 'redux-saga/effects';
 import { loginSaga, logoutSaga } from './authSagas';
 import { addTaskSaga } from './taskSagas';

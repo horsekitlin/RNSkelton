@@ -1,4 +1,4 @@
-import types from '~/contants/actionTypes';
+import types from '~/constants/actionTypes';
 import { authState } from './initialState';
 
 const loginSuccess = (auth, payload) =>
