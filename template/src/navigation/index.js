@@ -3,9 +3,11 @@ import {Navigation} from 'react-native-navigation';
 import HomeScreen from '~/screens/HomeScreen';
 import SettingScreen from '~/screens/SettingScreen';
 import reduxWrapper from './reduxWrapper';
+import LoadingScreen from '~/screens/LoadingScreen';
 
 Navigation.registerComponent('Home', () => reduxWrapper(HomeScreen));
 Navigation.registerComponent('Setting', () => reduxWrapper(SettingScreen));
+Navigation.registerComponent('Loading', () => reduxWrapper(LoadingScreen));
 
 export const startMain = async () => {
   const homeIcon = await Icon.getImageSource('home', 20, '#CCCCCC');

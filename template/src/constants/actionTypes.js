@@ -11,7 +11,7 @@ export const basicAsyncActionTypes = [
   'COMPLETE_TASK',
 ];
 
-const asyncActionTypes = basicAsyncActionTypes.reduce((result, actionType) => {
+export const asyncActionTypes = basicAsyncActionTypes.reduce((result, actionType) => {
   return [
     ...result,
     actionType,

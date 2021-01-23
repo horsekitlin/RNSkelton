@@ -1,5 +1,69 @@
 # Skelton
 
+## Tutorial
+
+```
+  $ npx react-native init ${appName} && cd ${appName}
+  $ cp -a ../rnskelton/template/* .
+  $ ../rnskelton/lastest/add_package.sh
+  $ rm -f ./App.js
+```
+
+### IOS
+
+```
+  $ cd ios
+  $ bundle install
+  $ rm -rf Pods 
+  $ bundle exec pod install --repo-update
+```
+
+### Setput SDK
+
+#### Firebase
+
+To do this, open your `/ios/{projectName}/AppDelegate.m` file, and add the following:
+
+At the top of the file, import the Firebase SDK:
+
+```
+#import <Firebase.h>
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  // Add me --- \/
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
+  }
+  // Add me --- /\
+  // ...
+}
+```
+
+[setup](https://rnfirebase.io/#3-ios-setup)
+
+#### App center
+appcenter 需要增加幾行程式碼
+
+[add sdk step](https://docs.microsoft.com/en-us/appcenter/sdk/getting-started/react-native#33-ios-only-integrate-the-ios-sdk-manually-without-react-native-link-or-cocoapods)
+
+
+### Font
+
+Info.plist
+
+```xml
+<key>UIAppFonts</key>
+	<array>
+		<string>Foundation.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>AntDesign.ttf</string>
+		<string>FontAwesome.ttf</string>
+	</array>
+```
+===
+
 ## Set scripts
 
 package.json
@@ -75,19 +139,6 @@ if [ ! -z "$GOOGLE_SERVICES_PLIST" ]; then
 fi
 ```
 
-
-## Setput SDK
-
-## Firebase
-
-[setup](https://rnfirebase.io/)
-
-## App center
-appcenter 需要增加幾行程式碼
-
-[add sdk step](https://docs.microsoft.com/en-us/appcenter/sdk/getting-started/react-native#33-ios-only-integrate-the-ios-sdk-manually-without-react-native-link-or-cocoapods)
-
-###
 ## 需要增加檔案
 
 ### IOS
