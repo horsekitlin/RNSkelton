@@ -15,6 +15,10 @@ async function requestUserPermission() {
 }
 
 Navigation.events().registerAppLaunchedListener(async () => {
-  requestUserPermission();
+  await Promise.all([
+    prepareIcons(),
+    requestUserPermission()
+  ]);
+
   startMain();
 });

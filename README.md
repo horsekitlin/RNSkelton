@@ -42,9 +42,24 @@ At the top of the file, import the Firebase SDK:
 [setup](https://rnfirebase.io/#3-ios-setup)
 
 #### App center
+
 appcenter 需要增加幾行程式碼
 
 [add sdk step](https://docs.microsoft.com/en-us/appcenter/sdk/getting-started/react-native#33-ios-only-integrate-the-ios-sdk-manually-without-react-native-link-or-cocoapods)
+
+##### 增加檔案 
+`ios/${appName}/AppCenter-Config.plist`
+
+```xml
+ <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+    <key>AppSecret</key>
+    <string>APP_SCRECT</string>
+    </dict>
+</plist>
+```
 
 
 ### Font
@@ -100,63 +115,16 @@ buildscript {
 }
 ```
 
-## Font
-
-### IOS
-
-Info.plist
-
-```xml
-<key>UIAppFonts</key>
-	<array>
-		<string>Foundation.ttf</string>
-		<string>MaterialCommunityIcons.ttf</string>
-		<string>MaterialIcons.ttf</string>
-		<string>Ionicons.ttf</string>
-		<string>AntDesign.ttf</string>
-		<string>FontAwesome.ttf</string>
-	</array>
-```
-
-### Android
+### Font
 
 [setup](https://github.com/oblador/react-native-vector-icons#android)
 
-## Appcenter
-
-## Env
-
-appcenter-pre-build.sh
+#### Copy the contents in the Fonts folder 
 ```
-#!/usr/bin/env bash
-
-if [ ! -z "$GOOGLE_SERVICES_JSON" ]; then
-  echo $GOOGLE_SERVICES_JSON | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/android/app/google-services.json"
-fi
-
-if [ ! -z "$GOOGLE_SERVICES_PLIST" ]; then
-  echo $GOOGLE_SERVICES_PLIST | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/ios/foodmate/GoogleService-Info.plist"
-fi
+  $ cp -a node_modules/react-native-vector-icons/Fonts/ ./android/app/src/main/assets/fonts
 ```
 
-## 需要增加檔案
-
-### IOS
-
-AppCenter-Config.plist
-
-```xml
- <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-    <dict>
-    <key>AppSecret</key>
-    <string>APP_SCRECT</string>
-    </dict>
-</plist>
-```
-
-### Android
+### Appcenter
 
 android/app/src/main/assets/appcenter-config.json
 
