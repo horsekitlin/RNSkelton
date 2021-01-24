@@ -4,7 +4,7 @@ echo "Add App Center..."
 yarn add appcenter appcenter-analytics appcenter-crashes
 
 echo "Add redux..."
-yarn add redux react-redux redux-saga
+yarn add redux react-redux redux-saga redux-persist
 
 echo "Add router..."
 yarn add react-native-navigation@7.0.0 react-native-navigation-hooks
