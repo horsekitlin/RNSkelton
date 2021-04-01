@@ -10,7 +10,7 @@ rm -f App.js
 
 chmod u+x ../add_package.sh && ../add_package.sh
 
-yarn ios
+npx pod-install
 
 echo "move files"
 mv ./* ..
