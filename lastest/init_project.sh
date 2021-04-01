@@ -18,6 +18,6 @@ mv ./.* ..
 
 echo "clear skelton files"
 cd ..
-rm -rf ./lastest ./template ./README.md
+rm -rf ./lastest ./template ./README.md ./$PROJ_NAM
 
 echo "initial project $PROJ_NAME done" ;
