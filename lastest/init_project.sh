@@ -8,19 +8,21 @@ echo "copy files"
 cp -R ../template ./src
 rm -f App.js
 
-echo "install packages"
-../lastest/add_package.sh
-
-npx pod-install
-
 echo "move files"
 pwd
 ls -al
 cp -a ./* ..
 cp -a ./.* ..
 
-echo "clear skelton files"
+echo "back"
 cd ..
+
+echo "install packages"
+./lastest/add_package.sh
+
+npx pod-install
+
+echo "remove useless files"
 rm -rf ./lastest ./template ./README.md ./$PROJ_NAM
 
 echo "initial project $PROJ_NAME done" ;
