@@ -8,7 +8,8 @@ echo "copy files"
 cp -R ../template ./src
 rm -f App.js
 
-chmod u+x ../add_package.sh && ../add_package.sh
+echo "install packages"
+../lastest/add_package.sh
 
 npx pod-install
 
