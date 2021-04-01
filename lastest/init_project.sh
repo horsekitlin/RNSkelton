@@ -14,8 +14,10 @@ echo "install packages"
 npx pod-install
 
 echo "move files"
-mv ./$PROJ_NAME/* ..
-mv ./$PROJ_NAME/.* ..
+pwd
+ls -al
+mv ./* ..
+mv ./.* ..
 
 echo "clear skelton files"
 cd ..
