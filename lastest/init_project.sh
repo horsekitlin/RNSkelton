@@ -16,8 +16,8 @@ npx pod-install
 echo "move files"
 pwd
 ls -al
-mv ./* ..
-mv ./.* ..
+cp -a ./* ..
+cp -a ./.* ..
 
 echo "clear skelton files"
 cd ..
