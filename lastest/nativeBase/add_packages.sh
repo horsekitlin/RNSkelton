@@ -24,8 +24,5 @@ yarn add flux-constants yup
 echo "Dev Packages..."
 yarn add -D babel-plugin-root-import redux-flipper react-native-flipper
 
-echo "add pod Packages..."
-npx pod-install
-
 echo "router setting..."
 npx rnn-link
