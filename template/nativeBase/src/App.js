@@ -2,6 +2,7 @@
 import { Navigation } from 'react-native-navigation';
 import { startMain } from '~/navigation';
 import messaging from '@react-native-firebase/messaging';
+import { prepareIcons } from './navigation/icons';
 
 async function requestUserPermission() {
   const authStatus = await messaging().requestPermission();
