@@ -12,7 +12,7 @@ cp ../template/nativeBase/index.js .
 rm -f ../template/nativeBase/index.js
 
 echo "copy files"
-cp -R ../template/nativeBase ./
+cp -R ../template/nativeBase/* ./
 rm -f App.js
 
 echo "move files"
