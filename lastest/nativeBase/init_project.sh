@@ -25,7 +25,7 @@ echo "back"
 cd ..
 
 echo "install packages"
-./lastest/add_package.sh
+./lastest/nativeBase/add_packages.sh
 
 npx pod-install
 
