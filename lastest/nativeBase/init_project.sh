@@ -26,6 +26,6 @@ echo "install packages"
 npx pod-install
 
 echo "remove useless files"
-rm -rf ./lastest ./template ./README.md ./$PROJ_NAM
+rm -rf ./lastest ./template ./README.md ./$PROJ_NAME
 
 echo "initial project $PROJ_NAME done" ;
