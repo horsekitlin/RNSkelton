@@ -7,8 +7,12 @@ cd $PROJ_NAME
 echo "remove ios/Pods"
 rm -rf ./ios/Pods
 
+echo "copy index.js"
+cp ../template/nativeBase/index.js .
+rm -f ../template/nativeBase/index.js
+
 echo "copy files"
-cp -R ../template ./src
+cp -R ../template/nativeBase ./src
 rm -f App.js
 
 echo "move files"
