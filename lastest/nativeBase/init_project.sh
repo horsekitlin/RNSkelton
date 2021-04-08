@@ -4,6 +4,9 @@ echo "initial react native project"
 npx react-native init $PROJ_NAME
 cd $PROJ_NAME
 
+echo "remove ios/Pods"
+rm -rf ./ios/Pods
+
 echo "copy files"
 cp -R ../template ./src
 rm -f App.js
