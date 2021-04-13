@@ -6,7 +6,7 @@ package.json
 
 ```json
 {
-  "name": "drcleaner",
+  "name": "app name",
   "version": "0.0.1",
   "private": true,
   "scripts": {
