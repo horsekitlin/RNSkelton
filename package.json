@@ -17,7 +17,7 @@
     "@react-native-firebase/auth": "^6.2.0",
     "flux-constants": "^0.2.2",
     "immutable": "^4.0.0-rc.12",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-elements": "^1.1.0",
