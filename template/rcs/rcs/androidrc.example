@@ -1,0 +1,5 @@
+export FIREBASE_TOKEN=""
+export BUILD_TYPE=""
+export FIREBASE_APP_ID=""
+export FIREBASE_GROUPS=""
+export PACKAGE_NAME=""
