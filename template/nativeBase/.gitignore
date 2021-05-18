@@ -57,5 +57,8 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-vendor
-codepushrc
+ios/vendor/bundle
+
+appcenter-config.json
+AppCenter-Config.plist
+GoogleService-Info.plist
