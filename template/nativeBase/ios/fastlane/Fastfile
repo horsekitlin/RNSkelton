@@ -16,13 +16,29 @@
 default_platform(:ios)
 
 platform :ios do
-  lane :beta do
-    match(type: "adhoc", readonly: true)
+  lane :update_match do
+    match(
+      type: "adhoc",
+      git_branch: ENV["SCHEMA"],
+      app_identifier: ENV["APP_ID"],
+      username: ENV['APPLE_ID'],
+      readonly: true
+    )
+  end
+
+  lane :buildUat do
+    package = load_json(json_path: "../package.json")
+    increment_version_number(version_number: package["version"])
+    increment_build_number
+    
     build_app(
+      clean: true,
+      output_directory: "./",
+      output_name: ENV['SCHEMA'] + ".ipa",
       scheme: ENV['SCHEMA'],
       workspace: ENV['WORK_SPACE'],
       export_options: {
-        method: "adhoc",
+        method: "ad-hoc",
         provisioningProfiles: {
           ENV['APP_ID'] => ENV['PROFILE_NAME']
         }
