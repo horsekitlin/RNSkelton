@@ -31,6 +31,6 @@ echo "install packages"
 npx pod-install
 
 echo "remove useless files"
-rm -rf ./lastest ./template ./README.md ./$PROJ_NAME
+rm -rf ./lastest ./template ./README.md ./nativeBase ./$PROJ_NAME
 
 echo "initial project $PROJ_NAME done" ;
