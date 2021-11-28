@@ -31,7 +31,7 @@ const configureStore = () => {
     compose(applyMiddleware(...middlewares)),
   );
 
-  const persistor = persistStore(store);
+  const persistore = persistStore(store);
   if (__DEV__) {
     module.hot.accept(() => {
       const nextRootReducer = require('../reducers/index').default;
@@ -40,8 +40,9 @@ const configureStore = () => {
       )
     });
   }
+
   return {
-    persistor,
+    persistore,
     store: {
       ...store,
       runSaga: sagaMiddleware.run(rootSaga),
