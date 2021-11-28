@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createStore, applyMiddleware, compose} from 'redux';
 import {persistStore, persistReducer} from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
@@ -6,6 +6,7 @@ import {
   startFetchingMiddleware,
   stopFetchingMiddleware
 } from '~/middlewares/fetchHandlerMiddleware';
+import { snackbarHandlerMiddleware } from '~/middlewares/snackbarHandlerMiddleware';
 import rootReducer from '~/reducers';
 import rootSaga from '~/sagas';
 
@@ -19,7 +20,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware({});
-  const middlewares = [startFetchingMiddleware, sagaMiddleware, stopFetchingMiddleware];
+  const middlewares = [startFetchingMiddleware, sagaMiddleware, stopFetchingMiddleware, snackbarHandlerMiddleware];
 
   if (__DEV__) {
     const createDebugger = require('redux-flipper').default;
@@ -31,7 +32,7 @@ const configureStore = () => {
     compose(applyMiddleware(...middlewares)),
   );
 
-  const persistore = persistStore(store);
+  const persistor = persistStore(store);
   if (__DEV__) {
     module.hot.accept(() => {
       const nextRootReducer = require('../reducers/index').default;
@@ -40,9 +41,8 @@ const configureStore = () => {
       )
     });
   }
-
   return {
-    persistore,
+    persistor,
     store: {
       ...store,
       runSaga: sagaMiddleware.run(rootSaga),

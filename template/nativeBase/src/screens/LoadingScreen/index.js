@@ -1,31 +1,15 @@
-import React from 'react';
-import {ActivityIndicator, View} from 'react-native';
-import commonColor from '~/native-base-theme/variables/commonColor';
+import { connect } from 'react-redux';
+import LoadingScreen from './view';
 
-const LoadingScreen = () => {
-  return (
-    <View style={styles.root}>
-      <ActivityIndicator size="large" />
-    </View>
-  );
-}
-
-LoadingScreen.options = (props) => {
+const mapStateToProps = ({setting}) => {
+  const {fetchingTypes} = setting;
+  const keys = Object.keys(fetchingTypes);
   return {
-    layout: {
-      componentBackgroundColor: 'rgba(0,0,0,0.2)',
-    },
+    isOpen: keys.length !== 0,
   };
 };
 
-const styles = {
-  root: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    opacity: 1,
-  }
-};
+const mapDispatchToProps = dispatch => ({
+});
 
-export default LoadingScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(LoadingScreen);

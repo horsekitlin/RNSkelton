@@ -1,6 +1,5 @@
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import commonColor from '~/native-base-theme/variables/commonColor';
 
 let icons = {};
 
@@ -17,14 +16,14 @@ export const prepareIcons = async () => {
     userIcon,
     selectedUserIcon,
   ] = await Promise.all([
-    Icon.getImageSource('home', 20, commonColor.white),
-    Icon.getImageSource('home', 20, commonColor.white),
-    Icon.getImageSource('file-text', 20, commonColor.white),
-    Icon.getImageSource('file-text', 20, commonColor.white),
-    Icon.getImageSource('calendar-o', 20, commonColor.white),
-    Icon.getImageSource('calendar-o', 20, commonColor.white),
-    Icon.getImageSource('user-circle', 20, commonColor.white),
-    Icon.getImageSource('user-circle', 20, commonColor.white),
+    Icon.getImageSource('home', 20, '#FFFFFF'),
+    Icon.getImageSource('home', 20, '#FFFFFF'),
+    Icon.getImageSource('file-text', 20, '#FFFFFF'),
+    Icon.getImageSource('file-text', 20, '#FFFFFF'),
+    Icon.getImageSource('calendar-o', 20, '#FFFFFF'),
+    Icon.getImageSource('calendar-o', 20, '#FFFFFF'),
+    Icon.getImageSource('user-circle', 20, '#FFFFFF'),
+    Icon.getImageSource('user-circle', 20, '#FFFFFF'),
   ]);
 
   setIcons({

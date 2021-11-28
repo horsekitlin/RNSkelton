@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Add App Center..."
-yarn add appcenter appcenter-analytics appcenter-crashes
-
 echo "Add redux..."
 yarn add redux react-redux redux-saga redux-persist
 
@@ -16,13 +13,15 @@ echo "Add Notification services..."
 yarn add @react-native-firebase/app @react-native-firebase/messaging 
 
 echo "Database..."
-yarn add @react-native-community/async-storage redux-persist
+yarn add @react-native-async-storage/async-storage redux-persist
 
 echo "Packages..."
-yarn add flux-constants yup
+yarn add flux-constants yup color react-native-safe-area-context react-native-svg react-native-vector-icons react-native-modal-overlay
+
 
 echo "Dev Packages..."
 yarn add -D babel-plugin-root-import redux-flipper react-native-flipper
 
 echo "router setting..."
 npx rnn-link
+

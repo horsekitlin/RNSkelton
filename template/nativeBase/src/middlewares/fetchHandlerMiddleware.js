@@ -1,25 +1,26 @@
-import { Navigation } from 'react-native-navigation';
-import {basicAsyncActionTypes, asyncActionTypes} from '~/constants/actionTypes';
-import { showLoading } from '~/utils/navigationHelper';
+import {
+  startFetchingAction,
+  stopFetchingAction,
+} from '~/actions/globalAreaActions';
+import {basicAsyncActionTypes} from '~/constants/actionTypes';
 
-const responseRegExp = /SUCCESS|ERROR/;
+const responseRegExp = /_SUCCESS|_ERROR/;
 
 export const startFetchingMiddleware = (store) => (next) => (action) => {
-  const isResponseAction = responseRegExp.test(action.type);
-  const isAsyncAction = basicAsyncActionTypes.includes(action.type);
+  const isBasicAsyncAction = basicAsyncActionTypes.includes(action.type);
 
-  if (isAsyncAction && !isResponseAction) {
-    showLoading();
+  if (isBasicAsyncAction) {
+    store.dispatch(startFetchingAction(action.type));
   }
   return next(action);
 };
 
 export const stopFetchingMiddleware = (store) => (next) => (action) => {
   const isResponseAction = responseRegExp.test(action.type);
-  const isAsyncAction = asyncActionTypes.includes(action.type);
-
-  if (isAsyncAction && isResponseAction) {
-    Navigation.dismissOverlay('LOADING_SCREEN');
+  const basicType = action.type.replace(responseRegExp, '');
+  const isBasicAsyncAction = basicAsyncActionTypes.includes(basicType);
+  if (isBasicAsyncAction && isResponseAction) {
+    store.dispatch(stopFetchingAction(basicType));
   }
   return next(action);
 };

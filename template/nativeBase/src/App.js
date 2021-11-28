@@ -16,6 +16,9 @@ async function requestUserPermission() {
 }
 
 Navigation.events().registerAppLaunchedListener(async () => {
+  // prepare service
+  // await firebase.initializeApp({}, config);
+
   await Promise.all([
     prepareIcons(),
     requestUserPermission()

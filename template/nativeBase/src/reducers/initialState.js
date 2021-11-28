@@ -1,3 +1,7 @@
+export const settingState = {
+  fetchingTypes: {},
+};
+
 export const authState = {
   isAuth: true,
 };

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addTaskAction } from '~/actions/taskActions';
+import { addTaskAction, deleteTaskAction, updateTaskAction } from '~/actions/taskActions';
 import HomeScreen from './view';
 
 const mapStateToProps = ({task}) => {
@@ -11,6 +11,12 @@ const mapStateToProps = ({task}) => {
 const mapDispatchToProps = dispatch => ({
   handleAddTask: payload => {
     dispatch(addTaskAction(payload));
+  },
+  handleUpdateTask: payload => {
+    dispatch(updateTaskAction(payload));
+  },
+  handleDeleteTask: payload => {
+    dispatch(deleteTaskAction(payload));
   },
 });
 

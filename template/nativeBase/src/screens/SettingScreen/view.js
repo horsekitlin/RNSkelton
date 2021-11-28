@@ -11,7 +11,7 @@ const SettingScreen = (props) => {
 
   return (
     <Container>
-      <Header />
+      {/* <Header />
       <Content>
         <ListItem icon>
           <Left>
@@ -55,7 +55,7 @@ const SettingScreen = (props) => {
             <Text>{settings.bluetooth ? 'On' : 'Off'}</Text>
           </Right>
         </ListItem>
-      </Content>
+      </Content> */}
     </Container>
   );
 };

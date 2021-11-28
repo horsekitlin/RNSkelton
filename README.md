@@ -20,3 +20,21 @@ package.json
   }
 }
 ```
+
+## IOS react-native-navigation should replace some code
+
+`ios/xxxxxxx/AppDelegate.m`
+
+```
+...
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+#ifdef FB_SONARKIT_ENABLED
+  InitializeFlipper(application);
+#endif
+
+  [ReactNativeNavigation bootstrapWithDelegate:self launchOptions:launchOptions];
+  return YES;
+}
+...
+```

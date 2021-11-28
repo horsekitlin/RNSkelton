@@ -60,26 +60,6 @@ At the top of the file, import the Firebase SDK:
 
 [setup](https://rnfirebase.io/#3-ios-setup)
 
-#### App center
-
-appcenter 需要增加幾行程式碼
-
-[add sdk step](https://docs.microsoft.com/en-us/appcenter/sdk/getting-started/react-native#33-ios-only-integrate-the-ios-sdk-manually-without-react-native-link-or-cocoapods)
-
-##### 增加檔案 
-`ios/${appName}/AppCenter-Config.plist`
-
-```xml
- <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-    <dict>
-    <key>AppSecret</key>
-    <string>APP_SCRECT</string>
-    </dict>
-</plist>
-```
-
 ## Trouble 
 
 [打包錯誤 library-not-found-for-lpods](https://stackoverflow.com/questions/23539147/xcode-ld-library-not-found-for-lpods?lq=1)
