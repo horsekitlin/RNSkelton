@@ -7,7 +7,7 @@ echo "Add router..."
 yarn add react-native-navigation@7.0.0 react-native-navigation-hooks
 
 echo "Add UI element..."
-yarn add native-base react-native-vector-icons
+yarn add native-base@3.2.2 react-native-vector-icons
 
 echo "Add Notification services..."
 yarn add @react-native-firebase/app @react-native-firebase/messaging 
