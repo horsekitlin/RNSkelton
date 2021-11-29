@@ -16,7 +16,7 @@ echo "Database..."
 yarn add @react-native-async-storage/async-storage redux-persist
 
 echo "Packages..."
-yarn add flux-constants yup color react-native-safe-area-context react-native-svg react-native-vector-icons react-native-modal-overlay
+yarn add flux-constants yup color react-native-safe-area-context react-native-svg react-native-vector-icons react-native-modal-overlay react-native-config
 
 
 echo "Dev Packages..."

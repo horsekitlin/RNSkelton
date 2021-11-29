@@ -17,8 +17,6 @@ cp -R ../template/nativeBase/.* ./
 rm -f App.js
 
 echo "move files"
-pwd
-ls -al
 cp -a ./* ..
 cp -a ./.* ..
 
