@@ -61,22 +61,3 @@ buildscript {
 ...
 }
 ```
-
-### App center
-
-android/app/src/main/assets/appcenter-config.json
-
-```json
-{
-  "app_secret": "54335d0d-cb1f-46d5-b4ec-2e59f3c3b810"
-}
-```
-
-res/values/strings.xml 
-
-```xml
-<string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
-<string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
-```
-
-https://appcenter.ms/users/${account}/apps/${project}

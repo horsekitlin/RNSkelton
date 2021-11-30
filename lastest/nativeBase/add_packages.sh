@@ -4,7 +4,7 @@ echo "Add redux..."
 yarn add redux react-redux redux-saga redux-persist
 
 echo "Add router..."
-yarn add react-native-navigation@7.0.0 react-native-navigation-hooks
+yarn add react-native-navigation react-native-navigation-hooks
 
 echo "Add UI element..."
 yarn add native-base@3.2.2 react-native-vector-icons
