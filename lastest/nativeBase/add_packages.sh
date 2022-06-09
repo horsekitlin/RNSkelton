@@ -22,3 +22,8 @@ yarn add axios flux-constants yup react-native-safe-area-context react-native-ve
 echo "Dev Packages..."
 yarn add -D babel-plugin-module-resolver redux-flipper react-native-flipper
 
+echo "husky install..."
+bash <(curl https://blog.ziey.me/assert/githook-lint-commitzen-and-changelog/init.sh)
+
+echo "configuare prettier"
+npm i -D prettier eslint-config-prettier eslint-plugin-prettier
