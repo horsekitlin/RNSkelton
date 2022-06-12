@@ -1,25 +1,34 @@
-// In index.js of a new project
-import { Navigation } from 'react-native-navigation';
-import { startMain } from '~/navigation';
-import messaging from '@react-native-firebase/messaging';
-import { prepareIcons } from './navigation/icons';
+import * as React from 'react';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NativeBaseProvider} from 'native-base';
+import store, {persistor} from '~/store/configureStore';
+import HomeScreen from '~/screens/HomeScreen';
+import LoginScreen from '~/screens/LoginScreen';
+import SignupScreen from '~/screens/SignupScreen';
 
-async function requestUserPermission() {
-  const authStatus = await messaging().requestPermission();
-  const enabled =
-    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+const Stack = createNativeStackNavigator();
 
-  if (enabled) {
-    return;
-  }
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <NativeBaseProvider>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Home"
+                options={{headerShown: false}}
+                component={HomeScreen}
+              />
+              <Stack.Screen name="Signup" component={SignupScreen} />
+              <Stack.Screen name="Login" component={LoginScreen} />
+            </Stack.Navigator>
+          </NativeBaseProvider>
+        </PersistGate>
+      </Provider>
+    </NavigationContainer>
+  );
 }
-
-Navigation.events().registerAppLaunchedListener(async () => {
-  await Promise.all([
-    prepareIcons(),
-    requestUserPermission()
-  ]);
-
-  startMain();
-});

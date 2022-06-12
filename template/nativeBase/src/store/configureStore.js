@@ -23,8 +23,6 @@ const configureStore = () => {
   const middlewares = [startFetchingMiddleware, sagaMiddleware, stopFetchingMiddleware, snackbarHandlerMiddleware];
 
   if (__DEV__) {
-    const createDebugger = require('redux-flipper').default;
-    middlewares.push(createDebugger());
   }
   
   const store = createStore(

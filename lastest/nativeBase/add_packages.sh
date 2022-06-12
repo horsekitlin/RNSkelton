@@ -4,26 +4,28 @@ echo "Add redux..."
 yarn add redux react-redux redux-saga redux-persist
 
 echo "Add router..."
-yarn add @react-navigation/native-stack @react-navigation/native react-native-screens react-native-safe-area-context react-native-gesture-handler@2.1.1
+yarn add @react-navigation/native-stack @react-navigation/native
+expo install react-native-screens react-native-safe-area-context
 
 echo "Add UI element..."
-yarn add react-native-elements react-native-vector-icons react-native-toast-message
+yarn add native-base
+expo install react-native-svg
 
-echo "Add Notification services..."
-yarn add @react-native-firebase/app @react-native-firebase/messaging 
+# echo "Add Notification services..."
+# yarn add @react-native-firebase/app @react-native-firebase/messaging 
 
 echo "Database..."
-yarn add @react-native-async-storage/async-storage
+expo install @react-native-async-storage/async-storage
 
 echo "Packages..."
-yarn add axios flux-constants yup react-native-safe-area-context react-native-vector-icons react-native-config 
+yarn add axios flux-constants yup lodash
 
 
 echo "Dev Packages..."
-yarn add -D babel-plugin-module-resolver redux-flipper react-native-flipper
+yarn add -D babel-plugin-module-resolver babel-plugin-root-import
 
 echo "husky install..."
-bash <(curl https://blog.ziey.me/assert/githook-lint-commitzen-and-changelog/init.sh)
+yarn add -D commitlint @commitlint/config-conventional eslint husky
 
 echo "configuare prettier"
-npm i -D prettier eslint-config-prettier eslint-plugin-prettier
+yarn add -D prettier eslint-config-prettier eslint-plugin-prettier
