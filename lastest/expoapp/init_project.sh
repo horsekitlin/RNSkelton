@@ -25,5 +25,6 @@ echo "install packages"
 echo "remove useless files"
 rm -rf ./lastest ./template ./README.md ./docs ./$PROJ_NAME
 rm -rf ./expoapp
+rm -f ./package-lock.json
 
 echo "initial project $PROJ_NAME done" ;
