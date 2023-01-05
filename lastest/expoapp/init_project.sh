@@ -1,7 +1,7 @@
 PROJ_NAME=$1
 
 echo "initial react native project"
-npx create-expo-app --template blank $PROJ_NAME
+npx create-expo-app --template minimal $PROJ_NAME
 
 cd $PROJ_NAME
 
