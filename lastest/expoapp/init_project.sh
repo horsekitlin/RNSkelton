@@ -1,20 +1,16 @@
 PROJ_NAME=$1
 
 echo "initial react native project"
-npx react-native init $PROJ_NAME
+npx create-expo-app --template blank $PROJ_NAME
+
 cd $PROJ_NAME
 
-echo "remove ios/Pods"
-rm -rf ./ios/Pods
-
 echo "copy index.js"
-cp ../template/expoapp/index.js .
-rm -f ../template/expoapp/index.js
+cp ../template/expoapp/App.js .
 
 echo "copy files"
 cp -R ../template/expoapp/* ./
 cp -R ../template/expoapp/.* ./
-rm -f App.js
 
 echo "move files"
 cp -a ./* ..
