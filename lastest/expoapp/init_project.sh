@@ -8,12 +8,12 @@ echo "remove ios/Pods"
 rm -rf ./ios/Pods
 
 echo "copy index.js"
-cp ../template/nativeBase/index.js .
-rm -f ../template/nativeBase/index.js
+cp ../template/expoapp/index.js .
+rm -f ../template/expoapp/index.js
 
 echo "copy files"
-cp -R ../template/nativeBase/* ./
-cp -R ../template/nativeBase/.* ./
+cp -R ../template/expoapp/* ./
+cp -R ../template/expoapp/.* ./
 rm -f App.js
 
 echo "move files"
@@ -24,11 +24,9 @@ echo "back"
 cd ..
 
 echo "install packages"
-./lastest/nativeBase/add_packages.sh
-
-npx pod-install
+./lastest/expoapp/add_packages.sh
 
 echo "remove useless files"
-rm -rf ./lastest ./template ./README.md ./nativeBase ./docs ./$PROJ_NAME
+rm -rf ./lastest ./template ./README.md ./docs ./$PROJ_NAME
 
 echo "initial project $PROJ_NAME done" ;
