@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createStore, applyMiddleware, compose} from 'redux';
+import { composeWithDevTools } from '@redux-devtools/extension';
 import {persistStore, persistReducer} from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import {
@@ -25,9 +26,13 @@ const configureStore = () => {
   if (__DEV__) {
   }
   
+  const composeEnhancers = __DEV__
+    ? composeWithDevTools({})
+    : compose;
+
   const store = createStore(
     persistedReducer,
-    compose(applyMiddleware(...middlewares)),
+    composeEnhancers(applyMiddleware(...middlewares)),
   );
 
   const persistor = persistStore(store);

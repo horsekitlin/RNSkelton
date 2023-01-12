@@ -21,7 +21,7 @@ yarn add axios flux-constants yup lodash react-native-status-bar-height
 yarn add @react-navigation/material-bottom-tabs
 
 echo "Dev Packages..."
-yarn add -D babel-plugin-module-resolver babel-plugin-root-import
+yarn add -D babel-plugin-module-resolver babel-plugin-root-import @redux-devtools/extension
 
 echo "husky install..."
 yarn add -D commitlint @commitlint/config-conventional eslint husky
