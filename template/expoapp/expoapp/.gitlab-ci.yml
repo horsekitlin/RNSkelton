@@ -1,0 +1,38 @@
+before_script:
+  - source ~/.bashrc
+
+after_script:
+  - echo "After script section"
+  - echo "For example you might do some cleanup here"
+
+buildUatIOS:
+  stage: build
+  only:
+    - deployUat
+  tags:
+    - macmini-drcleaner
+  script:
+    - yarn install
+    - cd ios
+    - bundle config set --local path 'vendor/bundle'
+    - bundle install
+    - bundle exec pod install
+    - source $IOSRC
+    - echo $MATCH_PASSWORD
+    - MATCH_PASSWORD=$MATCH_PASSWORD bundle exec fastlane update_match
+    - bundle exec fastlane buildUat
+
+buildUatANDROID:
+  stage: build
+  only:
+    - deployUat
+  tags:
+    - macmini-drcleaner
+  script:
+    - yarn install
+    - cd android
+    - bundle config set --local path 'vendor/bundle'
+    - bundle install
+    - source $ANDROIDRC
+    - bundle exec fastlane buildUat
+    
