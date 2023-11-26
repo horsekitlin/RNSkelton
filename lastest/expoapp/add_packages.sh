@@ -24,7 +24,7 @@ echo "Dev Packages..."
 yarn add -D babel-plugin-module-resolver babel-plugin-root-import @redux-devtools/extension
 
 echo "husky install..."
-yarn add -D commitlint @commitlint/config-conventional eslint husky
+yarn add -D commitlint @commitlint/config-conventional eslint husky remote-redux-devtools
 
 echo "configuare prettier"
 yarn add -D prettier eslint-config-prettier eslint-plugin-prettier

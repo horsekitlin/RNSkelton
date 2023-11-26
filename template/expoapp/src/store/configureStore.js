@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createStore, applyMiddleware, compose} from 'redux';
-import { composeWithDevTools } from '@redux-devtools/extension';
 import {persistStore, persistReducer} from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'remote-redux-devtools';
 import {
   startFetchingMiddleware,
   stopFetchingMiddleware
@@ -23,13 +23,8 @@ const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware({});
   const middlewares = [startFetchingMiddleware, sagaMiddleware, stopFetchingMiddleware, snackbarHandlerMiddleware];
 
-  if (__DEV__) {
-  }
+  const composeEnhancers = __DEV__ ? composeWithDevTools : compose;
   
-  const composeEnhancers = __DEV__
-    ? composeWithDevTools({})
-    : compose;
-
   const store = createStore(
     persistedReducer,
     composeEnhancers(applyMiddleware(...middlewares)),
