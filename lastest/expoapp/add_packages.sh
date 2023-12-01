@@ -16,12 +16,15 @@ yarn add react-native-paper
 echo "Database..."
 expo install @react-native-async-storage/async-storage
 
+echo "install react native icons"
+expo install @expo/vector-icons
+
 echo "Packages..."
 yarn add axios flux-constants yup lodash react-native-status-bar-height
 yarn add @react-navigation/material-bottom-tabs
 
 echo "Dev Packages..."
-yarn add -D babel-plugin-module-resolver babel-plugin-root-import @redux-devtools/extension
+yarn add -D babel-plugin-module-resolver babel-plugin-root-import redux-devtools-cli remote-redux-devtools @babel/core
 
 echo "husky install..."
 yarn add -D commitlint @commitlint/config-conventional eslint husky remote-redux-devtools

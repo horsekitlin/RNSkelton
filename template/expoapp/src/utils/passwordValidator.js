@@ -1,5 +1,8 @@
+import * as yup from 'yup';
+
+const passwordExp = /^(?=.*\d)(?=.*[a-z]).{6,30}$/
+export const passwordSchema = yup.string().required("Password can't be empty.").matches(passwordExp, "Password format fial.");
+
 export function passwordValidator(password) {
-  if (!password) return "Password can't be empty."
-  if (password.length < 5) return 'Password must be at least 5 characters long.'
-  return ''
+  return passwordSchema.validate(password);
 }

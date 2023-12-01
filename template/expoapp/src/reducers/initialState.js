@@ -3,9 +3,12 @@ export const settingState = {
 };
 
 export const authState = {
-  isAuth: true,
+  isAuth: false,
 };
 
 export const taskState = {
-  list: []
+  count: 0,
+  rows: [],
+  page: 1,
+  pageSize: 10,
 };

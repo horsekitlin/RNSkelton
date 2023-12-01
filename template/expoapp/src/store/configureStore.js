@@ -23,7 +23,7 @@ const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware({});
   const middlewares = [startFetchingMiddleware, sagaMiddleware, stopFetchingMiddleware, snackbarHandlerMiddleware];
 
-  const composeEnhancers = __DEV__ ? composeWithDevTools : compose;
+  const composeEnhancers = __DEV__ ? composeWithDevTools({realtime: true, port: 8000}) : compose;
   
   const store = createStore(
     persistedReducer,
@@ -31,6 +31,7 @@ const configureStore = () => {
   );
 
   const persistor = persistStore(store);
+
   if (__DEV__) {
     module.hot.accept(() => {
       const nextRootReducer = require('../reducers/index').default;
@@ -39,6 +40,7 @@ const configureStore = () => {
       )
     });
   }
+
   return {
     persistor,
     store: {

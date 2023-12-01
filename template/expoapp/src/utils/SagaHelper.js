@@ -31,7 +31,7 @@ const parseError = (error) => {
   if (isEmpty(response)) return error;
 
   const {data: resData} = response;
-  return resData.data;
+  return resData;
 };
 
 const getBodyAndHeaders = ({type, payload, token, headers}) => {
@@ -76,17 +76,17 @@ export default function* fetchAPIResult({
       headers,
     });
 
-    const {data: resData} = yield call(apiResult, params, newHeaders);
+    const resData = yield call(apiResult, params, newHeaders);
 
     if (isFunction(resultHandler)) {
       return yield put(
-        okFetch(resultHandler(resData.data), actionType, message),
+        okFetch(resultHandler(resData), actionType, message),
       );
     }
 
     if (isFunction(onSuccess)) onSuccess();
 
-    yield put(okFetch(resData.data, actionType, message));
+    yield put(okFetch(resData, actionType, message));
   } catch (error) {
     if (isFunction(onError)) onError();
     yield put(errFetch(parseError(error), actionType));

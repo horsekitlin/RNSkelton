@@ -1,17 +1,17 @@
 import constants from 'flux-constants';
 
 const syncActionTypes = [
+  'SIGNOUT',
   'START_FETCHING',
   'STOP_FETCHING',
 ];
 
 export const basicAsyncActionTypes = [
-  'LOGIN',
-  'LOGOUT',
-  'INITIAL_APP',
-  'ADD_TASK',
+  'SIGNIN',
+  'SIGNUP',
+  'GET_TASKS',
+  'CREATE_TASK',
   'UPDATE_TASK',
-  'DELETE_TASK',
 ];
 
 export const asyncActionTypes = basicAsyncActionTypes.reduce((result, actionType) => {

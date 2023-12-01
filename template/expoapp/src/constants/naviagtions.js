@@ -2,18 +2,35 @@ import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import HomeScreen from '~/screens/HomeScreen';
+import TaskScreen from '~/screens/TaskScreen';
 import SettingScreen from '~/screens/SettingScreen';
 import LoginScreen from '~/screens/LoginScreen';
 import SignupScreen from '~/screens/SignupScreen';
-import ResetPasswordScreen from '~/screens/ResetPasswordScreen';
+import CreateTaskScreen from '~/screens/CreateTaskScreen';
+import { IconButton } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-const HomeStackNavigator = () => (
+const TaskStackNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Screen
+      name="Task"
+      component={TaskScreen}
+      options={{
+        headerRight: () => {
+          const navigation = useNavigation();
+          return (
+            <IconButton
+              onPress={() => navigation.navigate('CreateTask', {mode: 'created'})}
+              icon="plus"
+            />
+          );
+        },
+      }}
+    />
+    <Stack.Screen name="CreateTask" component={CreateTaskScreen} />
   </Stack.Navigator>
 );
 
@@ -26,12 +43,12 @@ const SettingStackNavigator = () => (
 export const AuthNavigation = () => (
   <Tab.Navigator>
     <Tab.Screen
-        name="HomeTab"
-        component={HomeStackNavigator}
+        name="TaskTab"
+        component={TaskStackNavigator}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ focus, color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
+            <MaterialCommunityIcons name="bell" color={color} size={26} />
           ),
         }}
       />
@@ -52,6 +69,5 @@ export const UnauthNavigation = () => (
   <Stack.Navigator>
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Signup" component={SignupScreen} />
-    <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
   </Stack.Navigator>
 );

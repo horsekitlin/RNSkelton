@@ -1,23 +1,37 @@
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react';
-import {NavigationContainer} from '@react-navigation/native';
+import { connect, Provider } from 'react-redux';
+import { PaperProvider } from 'react-native-paper';
+import { PersistGate } from 'redux-persist/integration/react';
+import { NavigationContainer } from '@react-navigation/native';
 import { AuthNavigation, UnauthNavigation } from '~/constants/naviagtions';
-import store, {persistor} from '~/store/configureStore';
+import store, { persistor } from '~/store/configureStore';
+import { theme } from '~/constants/core/theme';
 
-export default function App() {
-  const {auth} = store.getState();
-  return (
-    <NavigationContainer>
+const ValidateAuthScreen = (props) => {
+
+  return props.isAuth
+    ? <AuthNavigation />
+    : <UnauthNavigation />
+};
+
+const mapStateToProps = ({auth}) => {
+  return {
+    isAuth: auth.isAuth,
+  };
+};
+
+const ValidateAuthRoute = connect(mapStateToProps)(ValidateAuthScreen);
+
+const App = () => (
+  <NavigationContainer>
+    <PaperProvider theme={theme}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          {
-            auth.isAuth
-              ? <AuthNavigation />
-              : <UnauthNavigation />
-          }
+          <ValidateAuthRoute />
         </PersistGate>
       </Provider>
-    </NavigationContainer>
-  );
-}
+    </PaperProvider>
+  </NavigationContainer>
+);
+
+export default App;

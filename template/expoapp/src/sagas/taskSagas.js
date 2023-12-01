@@ -1,88 +1,41 @@
-import { put } from 'redux-saga/effects';
 import types from '~/constants/actionTypes';
+import {createTaskResult, getTasksResult, updateTaskResult} from '~/apis/tasks';
+import fetchAPIResult from '~/utils/SagaHelper';
 
-const sleep = (ms = 1000) => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, ms)
-  })
+export function* getTasksSaga({payload}) {
+  return yield fetchAPIResult({
+    payload,
+    apiResult: getTasksResult,
+    actionType: types.GET_TASKS,
+    resultHandler: response => {
+      return {
+        page: payload.page,
+        pageSize: payload.pageSize,
+        ...response.items,
+      };
+    }
+  });
 }
 
-const okAdd = (newTask) => ({
-  type: types.ADD_TASK_SUCCESS,
-  payload: newTask,
-});
-
-const errAdd = ({ message }) => {
-  return {
-    type: types.ADD_TASK_ERROR,
-    payload: {
-      message
-    }
-  };
-};
-
-export function* addTaskSaga({ payload }) {
-  try {
-    yield sleep();
-    const newTask = {
-      ...payload,
-      isComplete: false,
-    };
-    yield put(okAdd(newTask));
-  } catch (error) {
-    const errorAction = errAdd(error);
-    yield put(errorAction);
-  }
+export function* createTaskSaga({payload}) {
+  return yield fetchAPIResult({
+    payload,
+    apiResult: createTaskResult,
+    actionType: types.CREATE_TASK,
+    onSuccess: payload.onSuccess,
+  });
 }
 
-const okUpdate = (newTask) => ({
-  type: types.UPDATE_TASK_SUCCESS,
-  payload: newTask,
-});
-
-const errUpdate = ({ message }) => {
-  return {
-    type: types.UPDATE_TASK_ERROR,
-    payload: {
-      message
+export function* updateTaskSaga({payload}) {
+  const {onSuccess, message, ...nextPayload} = payload;
+  return yield fetchAPIResult({
+    message,
+    onSuccess,
+    payload: nextPayload,
+    apiResult: updateTaskResult,
+    actionType: types.UPDATE_TASK,
+    resultHandler: () => {
+      return nextPayload;
     }
-  };
-};
-
-export function* updateTaskSaga({ payload }) {
-  try {
-    yield sleep();
-
-    yield put(okUpdate(payload));
-  } catch (error) {
-    const errorAction = errUpdate(error);
-    yield put(errorAction);
-  }
-}
-
-const okDelete = (newTask) => ({
-  type: types.DELETE_TASK_SUCCESS,
-  payload: newTask,
-});
-
-const errDelete = ({ message }) => {
-  return {
-    type: types.DELETE_TASK_ERROR,
-    payload: {
-      message
-    }
-  };
-};
-
-export function* deleteTaskSaga({ payload }) {
-  try {
-    yield sleep();
-
-    yield put(okDelete(payload));
-  } catch (error) {
-    const errorAction = errDelete(error);
-    yield put(errorAction);
-  }
+  });
 }

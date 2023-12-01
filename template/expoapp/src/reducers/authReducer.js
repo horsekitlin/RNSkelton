@@ -1,22 +1,20 @@
 import types from '~/constants/actionTypes';
 import { authState } from './initialState';
 
-const loginSuccess = (auth, payload) =>
-  auth.merge({ ...payload, isAuth: true });
-
-const logoutSuccess = (auth) =>
-  auth.merge({ isAuth: false });
+const signinSuccess = (auth, payload) => ({
+  ...auth,
+  ...payload,
+  isAuth: true,
+});
 
 export default function reducer(auth = authState, { type, payload }) {
   switch (type) {
-    case types.LOGOUT_SUCCESS:
-      return logoutSuccess(auth);
-    case types.LOGIN_SUCCESS:
-      return loginSuccess(auth, payload);
-    case types.LOGIN:
-    case types.LOGIN_ERROR:
-    case types.LOGOUT:
-    case types.LOGOUT_ERROR:
+    case types.SIGNIN_SUCCESS:
+      return signinSuccess(auth, payload);
+      case types.SIGNOUT:
+        return { ...auth, isAuth: false, token: '', user: {} };
+        case types.SIGNIN_ERROR:
+      case types.SIGNIN:
     default:
       return auth;
   }
