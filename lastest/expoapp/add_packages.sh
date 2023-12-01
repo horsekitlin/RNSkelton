@@ -5,7 +5,7 @@ yarn add redux react-redux redux-saga redux-persist
 
 echo "Add router..."
 yarn add @react-navigation/native-stack @react-navigation/native
-expo install react-native-screens react-native-safe-area-context
+npx expo install react-native-screens react-native-safe-area-context
 
 echo "Add UI element..."
 yarn add react-native-paper
@@ -14,14 +14,18 @@ yarn add react-native-paper
 # yarn add @react-native-firebase/app @react-native-firebase/messaging 
 
 echo "Database..."
-expo install @react-native-async-storage/async-storage
+npx expo install @react-native-async-storage/async-storage
 
 echo "install react native icons"
-expo install @expo/vector-icons
+npx expo install @expo/vector-icons
 
 echo "Packages..."
-yarn add axios flux-constants yup lodash react-native-status-bar-height
+yarn add axios flux-constants yup lodash react-native-status-bar-height react-native-paper-dates
 yarn add @react-navigation/material-bottom-tabs
+
+echo "tab view Packages"
+npx expo install react-native-pager-view
+yarn add react-native-tab-view
 
 echo "Dev Packages..."
 yarn add -D babel-plugin-module-resolver babel-plugin-root-import redux-devtools-cli remote-redux-devtools @babel/core
